@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0024104226B7FD6200946297 /* WalkThrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0024104126B7FD6200946297 /* WalkThrough.storyboard */; };
+		0024104626B7FFA300946297 /* ThirdIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024104526B7FFA300946297 /* ThirdIntroViewController.swift */; };
+		0024104826B835A200946297 /* WalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024104726B835A200946297 /* WalkThroughViewController.swift */; };
+		0024104A26B83BFD00946297 /* SecondIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024104926B83BFD00946297 /* SecondIntroViewController.swift */; };
 		0026126D25FB23BF000B40D1 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026126B25FB23BF000B40D1 /* ChallengeTableViewCell.swift */; };
 		0026126E25FB23BF000B40D1 /* ChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0026126C25FB23BF000B40D1 /* ChallengeTableViewCell.xib */; };
 		0026127225FB244C000B40D1 /* DaillyReadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026127025FB244C000B40D1 /* DaillyReadingTableViewCell.swift */; };
@@ -207,6 +211,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0024104126B7FD6200946297 /* WalkThrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WalkThrough.storyboard; sourceTree = "<group>"; };
+		0024104526B7FFA300946297 /* ThirdIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdIntroViewController.swift; sourceTree = "<group>"; };
+		0024104726B835A200946297 /* WalkThroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughViewController.swift; sourceTree = "<group>"; };
+		0024104926B83BFD00946297 /* SecondIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondIntroViewController.swift; sourceTree = "<group>"; };
 		0026126B25FB23BF000B40D1 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		0026126C25FB23BF000B40D1 /* ChallengeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTableViewCell.xib; sourceTree = "<group>"; };
 		0026127025FB244C000B40D1 /* DaillyReadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaillyReadingTableViewCell.swift; sourceTree = "<group>"; };
@@ -427,6 +435,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0024104426B7FF8A00946297 /* WalkThrough */ = {
+			isa = PBXGroup;
+			children = (
+				0024104526B7FFA300946297 /* ThirdIntroViewController.swift */,
+				0024104726B835A200946297 /* WalkThroughViewController.swift */,
+				0024104926B83BFD00946297 /* SecondIntroViewController.swift */,
+			);
+			path = WalkThrough;
+			sourceTree = "<group>";
+		};
 		007CF5F626031C0800F530AD /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -983,6 +1001,7 @@
 				D678693225F541B200DBB59C /* Goal */,
 				D6288D2D25E2B5DB00D73A61 /* Main.storyboard */,
 				D67C657825E5715F00F15290 /* Community.storyboard */,
+				0024104126B7FD6200946297 /* WalkThrough.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -991,6 +1010,7 @@
 			isa = PBXGroup;
 			children = (
 				D6288D2B25E2B5DB00D73A61 /* ViewController.swift */,
+				0024104426B7FF8A00946297 /* WalkThrough */,
 				0092500B2602604300A930DD /* NetworkManager */,
 				00FF3771260A576B00529570 /* Community */,
 				59A967CD26032BF1000EE89F /* Login */,
@@ -1151,6 +1171,7 @@
 				5913B22F25EF2E0C002AAA8C /* GmarketSansMedium.otf in Resources */,
 				00C3418925FD1873009B2A34 /* Assets.xcassets in Resources */,
 				5913B23925EF2E4D002AAA8C /* NotoSansCJKkr-Bold.otf in Resources */,
+				0024104226B7FD6200946297 /* WalkThrough.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1230,6 +1251,7 @@
 				59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */,
 				D6A7D3E9260607720098EA03 /* StatisticsViewController.swift in Sources */,
 				0026127925FB2501000B40D1 /* CALayer.swift in Sources */,
+				0024104626B7FFA300946297 /* ThirdIntroViewController.swift in Sources */,
 				D66CE6E8260A396E003BB131 /* Profile.swift in Sources */,
 				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,
 				00FF3779260A67EC00529570 /* GetUserBookReviewRequest.swift in Sources */,
@@ -1260,6 +1282,7 @@
 				D67C658D25E5B08300F15290 /* MyNavViewController.swift in Sources */,
 				597F82BE260C9D1000777A92 /* CheckTokenRequest.swift in Sources */,
 				591D1E942610BA4C004597B1 /* CloseAccountResponse.swift in Sources */,
+				0024104826B835A200946297 /* WalkThroughViewController.swift in Sources */,
 				00838FCE25F362DD00340AE0 /* TimerViewController.swift in Sources */,
 				D615DF922608F0E8006021C4 /* ProfileEditViewController.swift in Sources */,
 				00838FC625F3607A00340AE0 /* Colors.swift in Sources */,
@@ -1352,6 +1375,7 @@
 				599D3A9825F08A690085F134 /* MenuCell.swift in Sources */,
 				00C55F772604FB0B002848AB /* PostReadingGoalRequest.swift in Sources */,
 				59E18FFC26060FFB00D07656 /* UITableView.swift in Sources */,
+				0024104A26B83BFD00946297 /* SecondIntroViewController.swift in Sources */,
 				59393BBF260CC70E00A2CE30 /* ReviewResponse.swift in Sources */,
 				D6288D2A25E2B5DB00D73A61 /* SceneDelegate.swift in Sources */,
 				D6F153E925F9395B0044900E /* NetworkAPI.swift in Sources */,
