@@ -111,54 +111,63 @@ class JoinViewController: UIViewController {
     
     @IBAction func joinComplete(_ sender: Any) {
         guard let nickname = self.nicknameTextField.text else { return }
-        Network.request(req: JoinRequest(name: nickname, email: self.emailTextField.text!, password: self.pwConfirmTextField.text!)) { result in
+        Network.request(req: JoinRequest(name: nickname, email: self.emailTextField.text!, password: self.pwConfirmTextField.text!)) { [self] result in
             switch result {
             case .success(let response):
                 let result = response.code
-                if result == 1000 {
-                    self.presentAlert(title: "회원가입에 성공하였습니다. ", isCancelActionIncluded: false, handler: { _ in
-                        
-                        // 키체인에 토큰 등록
-                        let token = response.jwt 
-                        if self.keychain.set(token, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
-                            print("Keychain setting success.")
-                        } else {
-                            print("Failed to set on Keychain")
-                        }
-                        // 키체인에 이메일 등록
-                        let email = self.emailTextField.text
-                        if self.keychain.set(email!, forKey: Keys.email, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
-                            print("Keychain: email setting success. ")
-                        } else {
-                            print("Failed to set email on Keychain")
-                        }
-                        let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    })
-                } else if result == 2001 && result == 2002 {  // 이메일 입력 관련 오류
-                    self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
-                        self.emailTextField.text = ""
-                    }
-                } else if result == 2003 && result == 2004 {  // 비밀번호 입력 관련 오류
-                    self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
-                        self.passwordTextField.text = ""
-                        self.pwConfirmTextField.text = ""
-                    }
-                } else { // 중복된 이메일인 경우
-                    self.presentAlert(title: response.message, isCancelActionIncluded: false, handler: {_ in
-                        self.emailTextField.text = ""
-                        self.passwordTextField.text = ""
-                        self.pwConfirmTextField.text = ""
-                    })
-                }
+                didSendJoinRequest(resultCode: result, response: response)
             case .cancel(let cancelError):
                 print(cancelError as Any)
             case .failure(let error):
                 print(error as Any)
-                self.presentAlert(title: "회원가입에 실패하였습니다. ", isCancelActionIncluded: false) 
+                self.presentAlert(title: "회원가입에 실패하였습니다. ", isCancelActionIncluded: false)
             }
         }
     }
+    
+    private func didSendJoinRequest(resultCode: Int, response: JoinRequest.ResponseType) {
+        print("TEST", resultCode)
+        switch resultCode {
+        case 1000:
+            self.presentAlert(title: "회원가입에 성공하였습니다. ", isCancelActionIncluded: false, handler: { _ in
+                
+                // 키체인에 토큰 등록
+                let token = response.jwt
+                if self.keychain.set(token ?? "", forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
+                    print("Keychain setting success.")
+                } else {
+                    print("Failed to set on Keychain")
+                }
+                // 키체인에 이메일 등록
+                let email = self.emailTextField.text
+                if self.keychain.set(email!, forKey: Keys.email, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
+                    print("Keychain: email setting success. ")
+                } else {
+                    print("Failed to set email on Keychain")
+                }
+                let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+        case 2001, 2002:
+            self.presentAlert(title: response.message, isCancelActionIncluded: false, handler: {_ in
+                self.emailTextField.text = ""
+                self.passwordTextField.text = ""
+                self.pwConfirmTextField.text = ""
+            })
+        case 2003, 2004:
+            self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
+                self.passwordTextField.text = ""
+                self.pwConfirmTextField.text = ""
+            }
+        default:
+            self.presentAlert(title: response.message, isCancelActionIncluded: false, handler: {_ in
+                self.emailTextField.text = ""
+                self.passwordTextField.text = ""
+                self.pwConfirmTextField.text = ""
+            })
+        }
+    }
+
     
     @IBAction func nicknameEditingChanged(_ sender: Any) {
         if let text = nicknameTextField.text {

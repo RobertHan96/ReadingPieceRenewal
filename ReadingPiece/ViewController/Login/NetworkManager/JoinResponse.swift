@@ -12,5 +12,5 @@ public struct JoinResponse: Codable {
     public let isSuccess: Bool
     public let code: Int
     public let message: String
-    public let jwt: String
+    public let jwt: String?
 }
