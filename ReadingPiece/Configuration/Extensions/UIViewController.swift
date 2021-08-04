@@ -11,6 +11,27 @@ import Toast_Swift
 import Network
 
 extension UIViewController {
+    static let loginStroyBoard = "Login"
+    static let mainStroyBoard = "Main"
+    static let walkThroughStroyBoard = "WalkThrough"
+    static let secondWalkThroughViewControllerId = "secondWalkThrough"
+    static let thridWalkThroughtViewControllerId = "thirdWalkThrough"
+    static let mainViewControllerId = "TabController"
+    static let loginViewControllerId = "LoginNav"
+
+    func pushViewController(storyBoardName: String, viewControllerId: String) {
+        let storyboard = UIStoryboard(name: storyBoardName, bundle: nil)
+        let tabBarController = storyboard.instantiateViewController(withIdentifier: viewControllerId)
+        navigationController?.pushViewController(tabBarController, animated: false)
+    }
+    
+    func initViewControllerstoryBoardName(storyBoardName: String, viewControllerId: String) -> UIViewController{
+        let storyboard = UIStoryboard(name: storyBoardName, bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: viewControllerId)
+        
+        return viewController
+    }
+    
     func checkNetworkConnectivity() {
         let monitor = NWPathMonitor()
         let queue = DispatchQueue.global(qos: .background)

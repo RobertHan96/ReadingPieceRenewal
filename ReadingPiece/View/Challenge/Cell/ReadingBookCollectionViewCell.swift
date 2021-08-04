@@ -46,7 +46,7 @@ class ReadingBookCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-    
+        
     // 분단위로 오는 시간을 0시간 0분 형태로 변환
     private func minutesToHoursAndMinutes (_ stringMinutes : String) -> String {
         let minutes = Int(stringMinutes) ?? 0

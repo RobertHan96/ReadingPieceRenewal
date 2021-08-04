@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0011537B26BAF55A006B17AA /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011537A26BAF55A006B17AA /* LoginManager.swift */; };
+		0011537D26BAF832006B17AA /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011537C26BAF832006B17AA /* UIWindow.swift */; };
 		0024104226B7FD6200946297 /* WalkThrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0024104126B7FD6200946297 /* WalkThrough.storyboard */; };
 		0024104626B7FFA300946297 /* ThirdIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024104526B7FFA300946297 /* ThirdIntroViewController.swift */; };
 		0024104826B835A200946297 /* WalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024104726B835A200946297 /* WalkThroughViewController.swift */; };
@@ -211,6 +213,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0011537A26BAF55A006B17AA /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		0011537C26BAF832006B17AA /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		0024104126B7FD6200946297 /* WalkThrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WalkThrough.storyboard; sourceTree = "<group>"; };
 		0024104526B7FFA300946297 /* ThirdIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdIntroViewController.swift; sourceTree = "<group>"; };
 		0024104726B835A200946297 /* WalkThroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughViewController.swift; sourceTree = "<group>"; };
@@ -462,14 +466,15 @@
 				00838FC525F3607A00340AE0 /* Colors.swift */,
 				00838FE525F4EEE600340AE0 /* UIView.swift */,
 				59F4F22325F5C09500E82417 /* UIFont.swift */,
-				00838FF025F5017200340AE0 /* IndicatorView.swift */,
-				00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */,
+				0011537C26BAF832006B17AA /* UIWindow.swift */,
 				0026127525FB24E7000B40D1 /* UIButton.swift */,
-				0026127825FB2501000B40D1 /* CALayer.swift */,
 				59A967B72601C996000EE89F /* UILabel.swift */,
-				59E18FE82604D2A000D07656 /* UIViewController.swift */,
 				59E18FFB26060FFB00D07656 /* UITableView.swift */,
 				59E18FFE2606242500D07656 /* UIControl.swift */,
+				59E18FE82604D2A000D07656 /* UIViewController.swift */,
+				00838FF025F5017200340AE0 /* IndicatorView.swift */,
+				00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */,
+				0026127825FB2501000B40D1 /* CALayer.swift */,
 				597F82B4260C7EED00777A92 /* String.swift */,
 				0054BD2C26161E3C00ADFB29 /* Int.swift */,
 			);
@@ -731,6 +736,7 @@
 				59A967D32603484C000EE89F /* JoinViewController.swift */,
 				59E190242607823900D07656 /* PasswordResetViewController.swift */,
 				597F82B7260C8FEE00777A92 /* PrivacyPolicyViewController.swift */,
+				0011537A26BAF55A006B17AA /* LoginManager.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1229,6 +1235,7 @@
 				597F82C1260C9D4800777A92 /* CheckTokenResponse.swift in Sources */,
 				D6BEFD4C2611D8FB00866D45 /* UserGraphResponse.swift in Sources */,
 				59A967DA26036CC9000EE89F /* LoginNavViewController.swift in Sources */,
+				0011537B26BAF55A006B17AA /* LoginManager.swift in Sources */,
 				59F4F2F525F9B9A300E82417 /* ReviewBookInfoCell.swift in Sources */,
 				598398AE2610A743005AFB6A /* JoinResponse.swift in Sources */,
 				00C121A8260FAE2C00186F40 /* PostUserCakeTypeRequest.swift in Sources */,
@@ -1369,6 +1376,7 @@
 				0026128825FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift in Sources */,
 				D6AC741225FF4EDE0072F2F5 /* CommentViewController.swift in Sources */,
 				59E18FE92604D2A000D07656 /* UIViewController.swift in Sources */,
+				0011537D26BAF832006B17AA /* UIWindow.swift in Sources */,
 				005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */,
 				D6C1C007260B0EC6008EE7FE /* EditProfileResponse.swift in Sources */,
 				D60B364A25EE300D000E949D /* TermViewController.swift in Sources */,

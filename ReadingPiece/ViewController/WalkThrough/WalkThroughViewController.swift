@@ -15,7 +15,8 @@ class WalkThroughViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nextBtn.layer.zPosition = 1
+        skipIntroBtn.setTitleColor(.mainPink, for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -23,15 +24,16 @@ class WalkThroughViewController: UIViewController {
     }
 
     @IBAction func didSkipIntroButtonClicked(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabController")
-        navigationController?.pushViewController(tabBarController, animated: false)
+        if LoginManager().isValidLoginToken() {
+            self.pushViewController(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
+        } else {
+            let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.loginStroyBoard, viewControllerId: UIViewController.loginViewControllerId)
+            UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)
+        }
     }
     
     @IBAction func didNextButtonClicked(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "WalkThrough", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "secondWalkThrough")
-        navigationController?.pushViewController(vc, animated: true)
+        self.pushViewController(storyBoardName: UIViewController.walkThroughStroyBoard, viewControllerId: UIViewController.secondWalkThroughViewControllerId)
     }
     
 }

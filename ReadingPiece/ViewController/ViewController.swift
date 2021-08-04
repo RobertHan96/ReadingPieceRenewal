@@ -120,10 +120,9 @@ class ViewController: UIViewController {
     func setupFlowLayout() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        //flowLayout.itemSize = CGSize(width: self.radingBooksCollectionView.layer.bounds.width - 50, height: 138)
         flowLayout.itemSize = CGSize(width: self.radingBooksCollectionView.layer.bounds.width, height: 138)
-        flowLayout.minimumLineSpacing = 5.0
-        flowLayout.minimumInteritemSpacing = 10.0
+        flowLayout.minimumLineSpacing = 0.0
+        flowLayout.minimumInteritemSpacing = 0.0
         radingBooksCollectionView.collectionViewLayout = flowLayout
     }
     

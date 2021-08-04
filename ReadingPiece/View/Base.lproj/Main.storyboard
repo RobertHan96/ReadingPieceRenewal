@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Anx-nU-P5w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Anx-nU-P5w">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -294,12 +294,12 @@
                                                 </connections>
                                             </button>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jfz-8u-eZu">
-                                                <rect key="frame" x="20" y="523.5" width="350" height="138"/>
+                                                <rect key="frame" x="10" y="523.5" width="370" height="138"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="138" id="m78-a4-rB9"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GfD-xc-sEt">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="GfD-xc-sEt">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -316,14 +316,14 @@
                                             <constraint firstAttribute="height" constant="800" id="AFj-Oo-Hse"/>
                                             <constraint firstItem="kQw-LR-f9U" firstAttribute="leading" secondItem="YFy-G0-3Ss" secondAttribute="leading" id="M1W-7a-Sfq"/>
                                             <constraint firstAttribute="trailing" secondItem="kQw-LR-f9U" secondAttribute="trailing" id="WiZ-nW-v7a"/>
-                                            <constraint firstAttribute="trailing" secondItem="jfz-8u-eZu" secondAttribute="trailing" constant="20" id="Xra-G0-1jk"/>
+                                            <constraint firstAttribute="trailing" secondItem="jfz-8u-eZu" secondAttribute="trailing" constant="10" id="Xra-G0-1jk"/>
                                             <constraint firstItem="ofs-XL-MQh" firstAttribute="leading" secondItem="QTG-j3-4a3" secondAttribute="leading" constant="13" id="eEO-wa-uW3"/>
                                             <constraint firstItem="QTG-j3-4a3" firstAttribute="top" secondItem="bXr-Uq-YIC" secondAttribute="bottom" constant="30" id="gui-iI-kmZ"/>
                                             <constraint firstItem="aa1-Bi-J4U" firstAttribute="trailing" secondItem="QTG-j3-4a3" secondAttribute="trailing" id="mdp-eo-oSD"/>
                                             <constraint firstItem="ofs-XL-MQh" firstAttribute="top" secondItem="QTG-j3-4a3" secondAttribute="bottom" constant="38" id="the-CZ-5YV"/>
                                             <constraint firstItem="QTG-j3-4a3" firstAttribute="centerX" secondItem="YFy-G0-3Ss" secondAttribute="centerX" id="vjL-6j-FrI"/>
                                             <constraint firstItem="kQw-LR-f9U" firstAttribute="top" secondItem="YFy-G0-3Ss" secondAttribute="top" id="wyh-tB-z1w"/>
-                                            <constraint firstItem="jfz-8u-eZu" firstAttribute="leading" secondItem="YFy-G0-3Ss" secondAttribute="leading" constant="20" id="yVG-9o-8mV"/>
+                                            <constraint firstItem="jfz-8u-eZu" firstAttribute="leading" secondItem="YFy-G0-3Ss" secondAttribute="leading" constant="10" id="yVG-9o-8mV"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1480,19 +1480,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3EC-BS-h4p">
-                                <rect key="frame" x="99" y="90" width="177" height="273"/>
+                                <rect key="frame" x="99" y="90" width="177" height="257.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="purpleCake" translatesAutoresizingMaskIntoConstraints="NO" id="S23-QA-XZ3">
                                         <rect key="frame" x="2.5" y="20" width="172" height="172"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="달성 완료!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyY-Et-MAc">
-                                        <rect key="frame" x="19" y="192" width="139" height="47.5"/>
+                                        <rect key="frame" x="24.5" y="192" width="128" height="37.5"/>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한달동안 3권 챌린지!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzj-Nt-zh4">
-                                        <rect key="frame" x="14" y="247.5" width="149" height="25.5"/>
+                                        <rect key="frame" x="18" y="237.5" width="141" height="20"/>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1512,7 +1512,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해내셨군요! 00케이크를 완성했어요. 다음 챌린지를 통해 독서 습관을 이어나가요!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2LM-42-FPB">
-                                <rect key="frame" x="0.0" y="383" width="375" height="41.5"/>
+                                <rect key="frame" x="0.0" y="367.5" width="375" height="33"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
