@@ -54,6 +54,11 @@ class ViewController: UIViewController {
         initMainView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationItem.title = "리딩피스"
@@ -144,17 +149,14 @@ class ViewController: UIViewController {
                 print("LOG 챌린지 목표 정보 조회 성공")
                 self.spinner.stopAnimating()
                 self.challengeInfo = challengeData
-                // 챌린지 정보 조회 결과, 참여 기간이 만료된 경우
-                if self.challengeInfo?.isExpired == true {
-                    print("LOG 챌린지 정보 조회 결과, 참여 기간이 만료된 경우")
+                let isChallengeIsCompleted =  challengeData?.readingBook.first?.isComplete
+
+                // 챌린지 정보 조회 결과, 참여 기간이 만료된 경우 + 미션 성공 실패
+                if self.challengeInfo?.isExpired == true && isChallengeIsCompleted == 0{
                     self.showRestartChallengePopup()
-                // 목표 재시작이 필요한 경우를 제외한, 일반적인 상황
-                } else if self.challengeInfo?.readingBook.first?.isComplete == 1 {
-                    print("LOG 목표 재시작이 필요한 경우를 제외한 일반적인 상황")
-                    self.showRestartChallengePopup()
+                    // 참여기간내 미션 성공
                 } else {
-                    print("LOG 정상적으로 VC 초기화")
-                    self.initVC()
+                    self.initVC(isCompletedChallenge: isChallengeIsCompleted)
                 }
             }
         }
@@ -176,7 +178,7 @@ class ViewController: UIViewController {
     
     // 목표 설정 화면 진입 전에, 처음 추가한 목표인지 or 기존 목표 수정인지 여부를 판단하고 적용
     // 데이터 파싱 완료 이후, 유저에게 보여줄 데이터를 VC에 적용
-    func initVC() {
+    func initVC(isCompletedChallenge: Int?) {
         if let challenge = self.challengeInfo?.todayChallenge, let goal = self.challengeInfo?.readingGoal.first, let challengingBook = challengeInfo?.readingBook.first {
             // 다른 VC에서 재사용을 위해 UserDefaults에 저장하는 값들
             let goalBookId = challengingBook.goalBookId
@@ -209,9 +211,10 @@ class ViewController: UIViewController {
             targetTimeLabel.text = "목표 \(targetTime)분"
             currentReadingBookCountLabel.text = "\(readBookAmount)권 / "
             dDayLabel.text = "\(dDay)일 남음"
+
         }
     }
-    
+
     private func getUserNameByLength(_ name: String?) -> String {
         print("LOG - 유저 이름", name as Any)
         var nameString = ""
@@ -307,7 +310,6 @@ extension ViewController {
                             let goalBookInfo = jsonData["getchallenge1Rows"].arrayValue
                             let challengeStatus = jsonData["getchallenge2Rows"].arrayValue
                             guard let todayReadingJson = jsonData["getchallenge3Rows"].arrayValue.first else { return }
-
                             let books =  goalBookInfo.compactMap{ self.getBookInfoFromJson(json: $0) }
                             let challengeStatusList = challengeStatus.compactMap{ self.getReadingGoalFromJson(json: $0[0])}// 지금 읽는 책 1권으로 고정이라 0번째 인덱스값만 받도록함. 추후 여러권 보여준다면 수정 필요.
                             let todayReading = self.getChallengeFromJson(json: todayReadingJson)
@@ -346,7 +348,6 @@ extension ViewController {
         let isbn = json["publishNumber"].stringValue
         let goalBookId = json["goalBookId"].intValue
         let isComplete = json["isComplete"].intValue
-
         let chllengeReadingBook = ReadingBook(goalId: goalId, bookId: bookId, title: title, writer: writer, imageURL: imageUrl, publishNumber: isbn, goalBookId: goalBookId, isComplete: isComplete)
 
         return chllengeReadingBook

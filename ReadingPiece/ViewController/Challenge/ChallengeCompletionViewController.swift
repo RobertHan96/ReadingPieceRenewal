@@ -18,6 +18,7 @@ class ChallengeCompletionViewController: UIViewController {
     @IBOutlet weak var challengeNameLabel: UILabel!
     @IBOutlet weak var challengeCakeNameLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var fireCrackerView: SKView!
 
     override func viewDidLoad() {
@@ -74,9 +75,15 @@ class ChallengeCompletionViewController: UIViewController {
     }
 
     @IBAction func continueReading(_ sender: UIButton) {
-        //        챌린지 달성 시점에 해당 책에대한 리뷰 작성 화면으로 이동, 추후 구현
-        //        let writeReviewVC = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(withIdentifier: "writeReviewVC") as! ReviewWrittenViewController
-        //        self.navigationController?.pushViewController(writeReviewVC, animated: true)
+        // 챌린지 달성 이후, [계속하기] 버튼 선택시 메인 화면으로 rootViewController 변경
+        let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
+        UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func closeModal(_ sender: UIButton) {
+        // 계속하기화 마찬가지로 [X] 버튼 선택했을 때도 메인 화면으로 rootViewController 변경
+        let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
+        UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)
     }
     
     func shareResult() {
