@@ -115,12 +115,16 @@ class ViewController: UIViewController {
         radingBooksCollectionView.dataSource = self
         self.radingBooksCollectionView.register(UINib.init(nibName: cellId, bundle: nil), forCellWithReuseIdentifier: cellId)
         setupFlowLayout()
+        radingBooksCollectionView.layer.borderWidth = 0.5
+        radingBooksCollectionView.layer.cornerRadius = 10
+        radingBooksCollectionView.layer.borderColor = UIColor.middlegrey2.cgColor
     }
     
     func setupFlowLayout() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        flowLayout.itemSize = CGSize(width: self.radingBooksCollectionView.layer.bounds.width, height: 138)
+        flowLayout.itemSize = CGSize(width: self.radingBooksCollectionView.layer.bounds.width
+                                     , height: 138)
         flowLayout.minimumLineSpacing = 0.0
         flowLayout.minimumInteritemSpacing = 0.0
         radingBooksCollectionView.collectionViewLayout = flowLayout
