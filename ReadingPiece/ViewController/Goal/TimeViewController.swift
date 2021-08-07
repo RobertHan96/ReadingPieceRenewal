@@ -16,6 +16,7 @@ class TimeViewController: UIViewController {
     var period: String = ""
     var amount: Int = 0
     var goal: ClientGoal?
+    var goalid: Int = 0
 
     @IBOutlet weak var readingTimeLabel: UILabel!
     @IBOutlet weak var timeTextField: UITextField!
@@ -29,6 +30,8 @@ class TimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createDatePicker()
+        setupUI()
+
         print("LOG - 신규유저 여부 \(goal?.isNewUser)")
     }
     
@@ -52,7 +55,7 @@ class TimeViewController: UIViewController {
     // 화면 하단 - 완료 버튼과 연결된 액션
     @IBAction func addGoalAction(_ sender: UIButton) {
         // 신규 유저 : 책 추가 화면까지 이동
-        if goal?.isNewUser == true && goal?.time != nil {
+        if goal?.isNewUser != false {
             guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
             searchVC.goal = self.goal
             self.navigationController?.pushViewController(searchVC, animated: true)
@@ -60,7 +63,18 @@ class TimeViewController: UIViewController {
         } else {
             patchUserReadingGoal()
         }
+        
+        if goal?.isNewUser == false {
+            addGoalButton.setImage(UIImage(named: "completeButton"), for: .normal)
+        } else {
+            addGoalButton.setImage(UIImage(named: "selectedNext"), for: .normal)
+        }
     }
+    
+    @objc func popViewController(sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+    }
+
     
     @objc func donePressed() {
         let minute = Int(datePicker.countDownDuration/60)
@@ -83,7 +97,7 @@ class TimeViewController: UIViewController {
     func patchUserReadingGoal() {
         guard let token = keychain.get(Keys.token) else { return }
         let goalId = usderDefaults.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
-        let req = PatchReadingGoalRequest(Goal(period: period, amount: amount, time: time), goalId: goalId, token: token)
+        let req = PatchReadingTimeRequest(time, goalId: goalid, token: token)
                                 
         _ = Network.request(req: req) { (result) in
                 
@@ -106,6 +120,25 @@ class TimeViewController: UIViewController {
             }
         }
     }
+    
+    func setupUI() {
+        print("LOG - 신규유저 여부 \(goal?.isNewUser)")
+        createDatePicker()
+        if goal?.isNewUser == false {
+            self.navigationItem.title = "매일 독서 시간"
+            addGoalButton.setImage(UIImage(named: "completeButton"), for: .normal)
+            setNavBar()
+        }
+    }
+
+    private func setNavBar() {
+        let rightButton = UIBarButtonItem(image: UIImage(named: "XButton"), style: .plain, target: self, action: #selector(popViewController(sender:)))
+        navigationItem.hidesBackButton = true
+        self.navigationItem.rightBarButtonItem = rightButton
+        self.navigationItem.rightBarButtonItem?.tintColor = .darkgrey
+        self.navigationController?.navigationBar.tintColor = .darkgrey
+    }
+
     
     func initTerm(readingPeriod: String, readingAmount: Int) {
         period = readingPeriod

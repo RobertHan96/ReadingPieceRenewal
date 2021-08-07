@@ -113,6 +113,9 @@ class ViewController: UIViewController {
     @objc func modifiyTargetTimeAction(_ sender: UITapGestureRecognizer) {
         print("LOG - 목표시간 변경")
         guard let modifyReadingTimeVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TimeViewController") as? TimeViewController else { return}
+        // 목표 독서 시간 변경시 필요한 값들은 임의로 0 할당, 신규 유저 여부만 체크해서 전달
+        modifyReadingTimeVC.goal = ClientGoal(period: "", amount: 0, time: 0, isNewUser: false)
+        modifyReadingTimeVC.goalid = challengeInfo?.readingBook.first?.goalId ?? 0
         self.navigationController?.pushViewController(modifyReadingTimeVC, animated: true)
     }
 
@@ -181,7 +184,8 @@ class ViewController: UIViewController {
         let challengeName = "\(formattedPeriod)에 \(targetBookAmount)권 챌린지"
         restartChallnegeVC.delegate = self
         restartChallnegeVC.challengeName = challengeName
-        restartChallnegeVC.modalPresentationStyle = .overCurrentContext
+        restartChallnegeVC.modalTransitionStyle = .crossDissolve
+        restartChallnegeVC.modalPresentationStyle = .overFullScreen
         self.present(restartChallnegeVC, animated: true, completion: nil)
     }
     
