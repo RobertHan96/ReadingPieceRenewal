@@ -54,7 +54,7 @@ class ReviewTableViewCell: UITableViewCell {
     func configure(reviewData: UserBookReview) {
         nameLabel.text = reviewData.name
         dateLabel.text = reviewData.postAt
-        reviewLabel.text = reviewData.contents
+        reviewLabel.text = reviewData.text
         guard let stringUrl = reviewData.imageURL else { return}
         let imgUrl = URL(string: stringUrl)
         guard let star = reviewData.star else { return }

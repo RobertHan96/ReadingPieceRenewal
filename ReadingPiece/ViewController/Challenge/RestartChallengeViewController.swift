@@ -24,6 +24,9 @@ class RestartChallengeViewController: UIViewController {
     @IBOutlet weak var popupDescLabel: UILabel!
     @IBOutlet weak var retryButton: UIButton!
     @IBOutlet weak var restartButton: UIButton!
+    @IBOutlet weak var popupViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var popupViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var closeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,18 +38,55 @@ class RestartChallengeViewController: UIViewController {
     }
     
     private func setupUI() {
-        //view.backgroundColor = .clear
+        view.backgroundColor = .clear
         view.isOpaque = false
         popupView.layer.cornerRadius = 14
         popupDescLabel.text = """
-                                    \(challengeName ?? "진행 중인 챌린지")가 끝났어요.
-                                    같은 목표에 다시 도전하거나,
+                                    \(challengeName ?? "챌린지")가 끝났어요.
+                                    같은 목표에 7일 추가로 다시 도전하거나,
                                     모든 것을 초기화하고 새로 시작할 수 있어요.
                               """
-        //retryButton.makeRoundedButtnon("목표 재도전하기", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
-        //restartButton.makeRoundedButtnon("새로 시작하기", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
+        closeButton.tintColor = .darkgrey
+        popupViewHeight.constant = CGFloat(getsPopupViewHeightConstraints())
+        if getsPopupViewHeightConstraints() > 0 {
+            popupViewWidth.constant = 20
+        }
     }
     
+
+    // 디바이스별로 팝업창 최소 높이 확보에 필요한 constraint 값을 반환하는 함수
+    func getsPopupViewHeightConstraints() -> Int{
+        let screenHeight = UIScreen.main.bounds.size.height
+        var extraHeight: Int = 0
+        var extraWidth: Int = 0
+
+        if screenHeight == 896 {
+            print("iPhone 11, 11proMax, iPhone XR")
+            extraHeight = -50
+        }
+        else if screenHeight == 926 {
+            print("iPhone 12proMax")
+            extraHeight = -70
+        }
+        else if screenHeight == 844 {
+            print("iPhone 12, 12pro")
+        }
+        else if screenHeight == 736 {
+            print("iPhone 8plus")
+        }
+        else if screenHeight == 667 {
+            print("iPhone 8")
+            extraHeight = 30
+        }
+        else {
+            print("iPhone 12 mini, iPhone XS")
+        }
+        return extraHeight
+    }
+
+    @IBAction func closePopupAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     // 챌린지 재연장 API 호출
     @IBAction func retryChallengeAction(_ sender: UIButton) {

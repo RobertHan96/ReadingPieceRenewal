@@ -802,15 +802,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGC-9u-yFL">
-                                <rect key="frame" x="37.5" y="167" width="300" height="333.5"/>
+                                <rect key="frame" x="37.5" y="200" width="300" height="267"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="챌린지 종료!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyQ-Rg-Tgu">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="챌린지 종료!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyQ-Rg-Tgu">
                                         <rect key="frame" x="102.5" y="26" width="95" height="27"/>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWw-2r-nn9">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWw-2r-nn9">
                                         <rect key="frame" x="20" y="69" width="260" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Pyn-IC-1Qp"/>
@@ -821,7 +821,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="euG-J0-y1u">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="euG-J0-y1u">
                                         <rect key="frame" x="2.5" y="161" width="295" height="44"/>
                                         <state key="normal" image="rechallengeButton"/>
                                         <connections>
@@ -829,7 +829,7 @@
                                             <action selector="retryChallengeAction:" destination="GRb-mC-ehu" eventType="touchUpInside" id="YYc-AO-KLi"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDg-Ma-sRJ">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDg-Ma-sRJ">
                                         <rect key="frame" x="2.5" y="217" width="295" height="44"/>
                                         <state key="normal" image="trynewchallengeButton"/>
                                         <connections>
@@ -837,20 +837,29 @@
                                             <action selector="restartChallengeAction:" destination="GRb-mC-ehu" eventType="touchUpInside" id="AFi-3E-XqV"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yo6-Iv-Cso">
+                                        <rect key="frame" x="265" y="19" width="16" height="22"/>
+                                        <state key="normal" image="XButton"/>
+                                        <connections>
+                                            <action selector="closePopupAction:" destination="GRb-mC-ehu" eventType="touchUpInside" id="2W5-iw-duy"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="gWw-2r-nn9" secondAttribute="trailing" constant="20" id="4qf-cv-PHX"/>
                                     <constraint firstItem="YDg-Ma-sRJ" firstAttribute="top" secondItem="euG-J0-y1u" secondAttribute="bottom" constant="12" id="BzS-5P-78I"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YDg-Ma-sRJ" secondAttribute="bottom" constant="10" id="KVe-bV-dg0"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YDg-Ma-sRJ" secondAttribute="bottom" constant="24" id="KVe-bV-dg0"/>
                                     <constraint firstItem="MyQ-Rg-Tgu" firstAttribute="centerX" secondItem="wGC-9u-yFL" secondAttribute="centerX" id="SQu-Wi-HtU"/>
                                     <constraint firstItem="MyQ-Rg-Tgu" firstAttribute="top" secondItem="wGC-9u-yFL" secondAttribute="top" constant="26" id="XnM-vo-bxh"/>
                                     <constraint firstItem="euG-J0-y1u" firstAttribute="top" secondItem="gWw-2r-nn9" secondAttribute="bottom" constant="32" id="ae4-H6-4w2"/>
                                     <constraint firstItem="euG-J0-y1u" firstAttribute="centerX" secondItem="wGC-9u-yFL" secondAttribute="centerX" id="cNg-6H-rCp"/>
                                     <constraint firstItem="gWw-2r-nn9" firstAttribute="centerX" secondItem="wGC-9u-yFL" secondAttribute="centerX" id="cVt-zt-wWi"/>
+                                    <constraint firstItem="yo6-Iv-Cso" firstAttribute="top" secondItem="wGC-9u-yFL" secondAttribute="top" constant="19" id="eNe-Kk-qOE"/>
                                     <constraint firstItem="gWw-2r-nn9" firstAttribute="leading" secondItem="wGC-9u-yFL" secondAttribute="leading" constant="20" id="eY2-ZF-iZl"/>
                                     <constraint firstItem="gWw-2r-nn9" firstAttribute="top" secondItem="MyQ-Rg-Tgu" secondAttribute="bottom" constant="16" id="gir-rw-Og6"/>
                                     <constraint firstItem="YDg-Ma-sRJ" firstAttribute="centerX" secondItem="wGC-9u-yFL" secondAttribute="centerX" id="kCH-0A-GG2"/>
+                                    <constraint firstAttribute="trailing" secondItem="yo6-Iv-Cso" secondAttribute="trailing" constant="19" id="n0d-8W-XKc"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -860,13 +869,16 @@
                             <constraint firstItem="wGC-9u-yFL" firstAttribute="centerX" secondItem="wyl-ed-kUb" secondAttribute="centerX" id="19y-Hj-Sa4"/>
                             <constraint firstItem="wGC-9u-yFL" firstAttribute="centerY" secondItem="wyl-ed-kUb" secondAttribute="centerY" id="68a-vc-XDi"/>
                             <constraint firstItem="wGC-9u-yFL" firstAttribute="width" secondItem="wyl-ed-kUb" secondAttribute="width" multiplier="0.8" id="85e-vv-ivS"/>
-                            <constraint firstItem="wGC-9u-yFL" firstAttribute="height" secondItem="wyl-ed-kUb" secondAttribute="height" multiplier="0.5" id="Ubn-fD-ITi"/>
+                            <constraint firstItem="wGC-9u-yFL" firstAttribute="height" secondItem="wyl-ed-kUb" secondAttribute="height" multiplier="0.4" id="Ubn-fD-ITi"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="yo6-Iv-Cso" id="9L6-9h-L0N"/>
                         <outlet property="popupDescLabel" destination="gWw-2r-nn9" id="uVf-87-8SI"/>
                         <outlet property="popupTitleLabel" destination="MyQ-Rg-Tgu" id="8Rd-nR-TWj"/>
                         <outlet property="popupView" destination="wGC-9u-yFL" id="gO1-Dr-Wpg"/>
+                        <outlet property="popupViewHeight" destination="Ubn-fD-ITi" id="uiL-q6-U3u"/>
+                        <outlet property="popupViewWidth" destination="85e-vv-ivS" id="gGF-Bk-Fgk"/>
                         <outlet property="restartButton" destination="YDg-Ma-sRJ" id="1iB-y6-Jvj"/>
                         <outlet property="retryButton" destination="euG-J0-y1u" id="D43-sZ-a0P"/>
                     </connections>
@@ -1578,6 +1590,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="XButton" width="15.5" height="15"/>
         <image name="addPictureIcon" width="19" height="19"/>
         <image name="challenge" width="25" height="25"/>
         <image name="challengeCake" width="191.5" height="127.5"/>
