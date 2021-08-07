@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0011537B26BAF55A006B17AA /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011537A26BAF55A006B17AA /* LoginManager.swift */; };
 		0011537D26BAF832006B17AA /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011537C26BAF832006B17AA /* UIWindow.swift */; };
+		0011537F26BECF41006B17AA /* PatchReadingTimeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011537E26BECF40006B17AA /* PatchReadingTimeRequest.swift */; };
 		0024104226B7FD6200946297 /* WalkThrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0024104126B7FD6200946297 /* WalkThrough.storyboard */; };
 		0024104626B7FFA300946297 /* ThirdIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024104526B7FFA300946297 /* ThirdIntroViewController.swift */; };
 		0024104826B835A200946297 /* WalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024104726B835A200946297 /* WalkThroughViewController.swift */; };
@@ -215,6 +216,7 @@
 /* Begin PBXFileReference section */
 		0011537A26BAF55A006B17AA /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		0011537C26BAF832006B17AA /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
+		0011537E26BECF40006B17AA /* PatchReadingTimeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchReadingTimeRequest.swift; sourceTree = "<group>"; };
 		0024104126B7FD6200946297 /* WalkThrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WalkThrough.storyboard; sourceTree = "<group>"; };
 		0024104526B7FFA300946297 /* ThirdIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdIntroViewController.swift; sourceTree = "<group>"; };
 		0024104726B835A200946297 /* WalkThroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughViewController.swift; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 			isa = PBXGroup;
 			children = (
 				D6F153E825F9395B0044900E /* NetworkAPI.swift */,
+				0011537E26BECF40006B17AA /* PatchReadingTimeRequest.swift */,
 				00C55F762604FB0B002848AB /* PostReadingGoalRequest.swift */,
 				00FF3761260A2FBF00529570 /* PatchReadingGoalRequest.swift */,
 				00FF374E2609157300529570 /* PostChallengeBookRequest.swift */,
@@ -1342,6 +1345,7 @@
 				D67C658225E572DB00F15290 /* CommunityViewController.swift in Sources */,
 				00D8632425FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.swift in Sources */,
 				0026128225FB2585000B40D1 /* ChallengeCompletionViewController.swift in Sources */,
+				0011537F26BECF41006B17AA /* PatchReadingTimeRequest.swift in Sources */,
 				00D8632F25FF867F00E9EFF9 /* Constants.swift in Sources */,
 				599D3AC125F1E32B0085F134 /* ReviewHeaderCell.swift in Sources */,
 				00FF375B260A292E00529570 /* GetChallengeRequest.swift in Sources */,

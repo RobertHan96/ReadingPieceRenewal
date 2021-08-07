@@ -63,15 +63,11 @@ class ReadingBookCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupUI() {
-//        bgView.layer.borderWidth = 0.5
-//        bgView.layer.cornerRadius = 10
-//        bgView.layer.borderColor = UIColor.middlegrey2.cgColor
-//        bookThumbnail.layer.cornerRadius = 4
         pageBackgroundView.layer.cornerRadius = 5
         percentBackgroundView.layer.cornerRadius = 5
         timeBackgroundView.layer.cornerRadius = 5
         bookThumbnail.layer.cornerRadius = 4
-        bookThumbnail.layer.borderWidth = 0.4
+        bookThumbnail.layer.borderWidth = 0.5
         bookThumbnail.layer.borderColor = UIColor.darkgrey.cgColor
 
     }

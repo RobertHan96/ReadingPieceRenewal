@@ -13,6 +13,12 @@ public struct PatchReadingGoalResponse: Codable {
     public let message: String?
 }
 
+public struct PatchReadingTimeResponse: Codable {
+    public let isSuccess: Bool?
+    public let code: Int?
+    public let message: String?
+}
+
 public struct BookReviewResponse: Codable {
     public let isSuccess: Bool
     public let code: Int

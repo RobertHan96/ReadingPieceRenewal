@@ -29,7 +29,7 @@ class ReadingBookTableViewCell: UITableViewCell {
     
     func setupUI() {
         bookImageView.layer.cornerRadius = 4
-        bookImageView.layer.borderWidth = 0.4
+        bookImageView.layer.borderWidth = 0.5
         bookImageView.layer.borderColor = UIColor.darkgrey.cgColor
         titleLabel.textColor = .charcoal
         authorLabel.textColor = .darkgrey
