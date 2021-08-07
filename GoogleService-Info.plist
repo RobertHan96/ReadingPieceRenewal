@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>997065473644-ggsakq03hfvp22apul19k6t264fuh1bu.apps.googleusercontent.com</string>
+	<string>476277619955-f60jj89kv4hl4oa792mbl5eu23ahp19v.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.997065473644-ggsakq03hfvp22apul19k6t264fuh1bu</string>
+	<string>com.googleusercontent.apps.476277619955-f60jj89kv4hl4oa792mbl5eu23ahp19v</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAyzJZ8ZUTctlziFM9YVR-isXfvlpT6W2c</string>
+	<string>AIzaSyC16L_c4TcoBAlRwtu-2t1xiwl0ArtrvhU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>997065473644</string>
+	<string>476277619955</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.studiofirstzero.game</string>
+	<string>makeus.team.want.ReadingPiece</string>
 	<key>PROJECT_ID</key>
-	<string>ggame-92274</string>
+	<string>readingpiece-7bab2</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ggame-92274.appspot.com</string>
+	<string>readingpiece-7bab2.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:997065473644:ios:3d071ce6d15a1893f8e249</string>
+	<string>1:476277619955:ios:eb700c3cbe38e9cee6cb86</string>
 </dict>
 </plist>

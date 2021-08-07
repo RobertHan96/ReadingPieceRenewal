@@ -11,6 +11,7 @@
 		0011537D26BAF832006B17AA /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011537C26BAF832006B17AA /* UIWindow.swift */; };
 		0011537F26BECF41006B17AA /* PatchReadingTimeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011537E26BECF40006B17AA /* PatchReadingTimeRequest.swift */; };
 		0011538226BEDD07006B17AA /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011538126BEDD07006B17AA /* DeviceManager.swift */; };
+		0011538426BEF86F006B17AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0011538326BEF86F006B17AA /* GoogleService-Info.plist */; };
 		0024104226B7FD6200946297 /* WalkThrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0024104126B7FD6200946297 /* WalkThrough.storyboard */; };
 		0024104626B7FFA300946297 /* ThirdIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024104526B7FFA300946297 /* ThirdIntroViewController.swift */; };
 		0024104826B835A200946297 /* WalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024104726B835A200946297 /* WalkThroughViewController.swift */; };
@@ -28,7 +29,6 @@
 		0054BD2D26161E3C00ADFB29 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054BD2C26161E3C00ADFB29 /* Int.swift */; };
 		0054BD312616385000ADFB29 /* PatchRestartChallengeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054BD302616385000ADFB29 /* PatchRestartChallengeRequest.swift */; };
 		005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */; };
-		0066A3EE2628740C00C48355 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0066A3ED2628740C00C48355 /* GoogleService-Info.plist */; };
 		007CF5F32603192800F530AD /* ReviewImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007CF5F22603192800F530AD /* ReviewImageView.xib */; };
 		007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007CF5F7260321E800F530AD /* ReviewImageView.swift */; };
 		00838FC625F3607A00340AE0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FC525F3607A00340AE0 /* Colors.swift */; };
@@ -219,6 +219,7 @@
 		0011537C26BAF832006B17AA /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		0011537E26BECF40006B17AA /* PatchReadingTimeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchReadingTimeRequest.swift; sourceTree = "<group>"; };
 		0011538126BEDD07006B17AA /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
+		0011538326BEF86F006B17AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0024104126B7FD6200946297 /* WalkThrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WalkThrough.storyboard; sourceTree = "<group>"; };
 		0024104526B7FFA300946297 /* ThirdIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdIntroViewController.swift; sourceTree = "<group>"; };
 		0024104726B835A200946297 /* WalkThroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughViewController.swift; sourceTree = "<group>"; };
@@ -236,7 +237,6 @@
 		0054BD2C26161E3C00ADFB29 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		0054BD302616385000ADFB29 /* PatchRestartChallengeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchRestartChallengeRequest.swift; sourceTree = "<group>"; };
 		005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReadingPercentPopupViewController.swift; sourceTree = "<group>"; };
-		0066A3ED2628740C00C48355 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		007CF5F22603192800F530AD /* ReviewImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewImageView.xib; sourceTree = "<group>"; };
 		007CF5F7260321E800F530AD /* ReviewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImageView.swift; sourceTree = "<group>"; };
 		00838FC525F3607A00340AE0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -880,7 +880,7 @@
 		D6288D1B25E2B5DB00D73A61 = {
 			isa = PBXGroup;
 			children = (
-				0066A3ED2628740C00C48355 /* GoogleService-Info.plist */,
+				0011538326BEF86F006B17AA /* GoogleService-Info.plist */,
 				D6288D2625E2B5DB00D73A61 /* ReadingPiece */,
 				D6288D2525E2B5DB00D73A61 /* Products */,
 				7D25273E0465C2D67DFF944A /* Pods */,
@@ -1148,7 +1148,6 @@
 			files = (
 				D67C657925E5715F00F15290 /* Community.storyboard in Resources */,
 				0026126E25FB23BF000B40D1 /* ChallengeTableViewCell.xib in Resources */,
-				0066A3EE2628740C00C48355 /* GoogleService-Info.plist in Resources */,
 				5913B23D25EF2E4D002AAA8C /* NotoSansCJKkr-Black.otf in Resources */,
 				00D8632525FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.xib in Resources */,
 				5913B23B25EF2E4D002AAA8C /* NotoSansCJKkr-DemiLight.otf in Resources */,
@@ -1166,6 +1165,7 @@
 				599D3AC225F1E32B0085F134 /* ReviewHeaderCell.xib in Resources */,
 				5913B23C25EF2E4D002AAA8C /* NotoSansCJKkr-Thin.otf in Resources */,
 				5913B23E25EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf in Resources */,
+				0011538426BEF86F006B17AA /* GoogleService-Info.plist in Resources */,
 				59F4F2F625F9B9A300E82417 /* ReviewBookInfoCell.xib in Resources */,
 				D678693725F5426400DBB59C /* ReviewTableViewCell.xib in Resources */,
 				009250052602587100A930DD /* PurpleFirecracker.sks in Resources */,
