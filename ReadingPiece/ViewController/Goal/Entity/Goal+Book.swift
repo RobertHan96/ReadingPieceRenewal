@@ -66,7 +66,7 @@ public struct UserBookReview: Codable {
 }
 
 
-public struct Count: Codable {
+public struct UserReviewCount: Codable {
     public var currentRead: Int
 }
 
