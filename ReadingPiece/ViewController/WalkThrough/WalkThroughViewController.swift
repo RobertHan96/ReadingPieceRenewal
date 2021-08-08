@@ -16,6 +16,8 @@ class WalkThroughViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nextBtn.layer.zPosition = 1
+        nextBtn.layer.cornerRadius = nextBtn.frame.height / 2
+        nextBtn.backgroundColor = .melon
         skipIntroBtn.setTitleColor(.mainPink, for: .normal)
     }
     

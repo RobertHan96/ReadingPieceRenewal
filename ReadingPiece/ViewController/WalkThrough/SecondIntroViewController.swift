@@ -16,6 +16,9 @@ class SecondIntroViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nextBtn.layer.zPosition = 1
+        nextBtn.layer.cornerRadius = nextBtn.frame.height / 2
+        nextBtn.backgroundColor = .melon
+        nextBtn.titleLabel?.font = UIFont.NotoSans(.medium, size: 16)
         skipIntroBtn.setTitleColor(.mainPink, for: .normal)
     }
     
