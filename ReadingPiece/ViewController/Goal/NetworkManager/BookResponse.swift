@@ -18,7 +18,7 @@ public struct UserBookReviewResponse: Codable {
     public let isSuccess: Bool
     public let code: Int
     public let message: String
-    public let userBookReview: [UserBookReview]?
+    public let userBookReview: [UserBookReviewFirstDetail]?
     public let ReviewlikeCount: Int?
     public let ReviewcommentCount: Int?
     public let totalReadingUser: [UserReviewCount]?

@@ -8,7 +8,7 @@
 import UIKit
 
 class BookReviewViewController: UIViewController {
-    var userReview: [UserBookReview] = []
+    var userReview: [UserBookReviewFirstDetail] = []
     var expandedIndexSet : IndexSet = []
     @IBOutlet weak var reviewTableView: UITableView!
     

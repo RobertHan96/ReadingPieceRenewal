@@ -51,7 +51,7 @@ class ReviewTableViewCell: UITableViewCell {
         commentLabel.isHidden = true
     }
     
-    func configure(reviewData: UserBookReview) {
+    func configure(reviewData: UserBookReviewFirstDetail) {
         nameLabel.text = reviewData.name
         dateLabel.text = reviewData.postAt
         reviewLabel.text = reviewData.text

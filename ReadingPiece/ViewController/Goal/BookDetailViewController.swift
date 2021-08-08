@@ -13,7 +13,7 @@ class BookDetailViewController: UIViewController {
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let defaults = UserDefaults.standard
     var initializer: Int?
-    var userReview: [UserBookReview] = []
+    var userReview: [UserBookReviewFirstDetail] = []
     var goal: ClientGoal?
 
     @IBOutlet weak var bookImageView: UIImageView!
@@ -271,7 +271,7 @@ class BookDetailViewController: UIViewController {
         publisherLabel.text = book?.publisher
     }
     
-    func setTableViewDataSource(review: [UserBookReview], totalReader: Int) {
+    func setTableViewDataSource(review: [UserBookReviewFirstDetail], totalReader: Int) {
         self.userReview = review
         self.reviewTableView.reloadData()
         self.totalReviewLabel.text = "\(totalReader)"
