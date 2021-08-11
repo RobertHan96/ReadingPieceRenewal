@@ -38,10 +38,12 @@ class DaillyDiaryWrittenCompletionViewController: UIViewController {
 
     @objc func closeDaillyReadingResult(sender: UIBarButtonItem){
         // 메인화면으로 이동
+        print("test")
         self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func gotomainTapped(_ sender: Any) {
+        print("test")
         self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -77,6 +79,7 @@ class DaillyDiaryWrittenCompletionViewController: UIViewController {
     }
     
     private func setupUI() {
+        UIApplication.shared.endIgnoringInteractionEvents()
         setNavBar()
         setupTableView()
         gotomainButton.makeRoundedButtnon("메인으로 돌아가기", titleColor: .white, borderColor: UIColor.melon.cgColor, backgroundColor: .melon)
