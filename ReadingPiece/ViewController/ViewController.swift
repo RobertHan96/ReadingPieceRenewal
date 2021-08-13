@@ -224,6 +224,21 @@ class ViewController: UIViewController {
             targetTimeLabel.text = "목표 \(targetTime)분"
             currentReadingBookCountLabel.text = "\(readBookAmount)권 / "
             dDayLabel.text = "\(dDay)일 남음"
+            
+            if let challengeCompleted = challengeInfo {
+                if challengeCompleted.isCompletedChallenge() {
+                    GlobalSettings.challengeCompletionInformation.increaseCompletedCount()
+                    if GlobalSettings.challengeCompletionInformation.isValid() == true {
+                        print("LOG - 챌린지 만료시점에 목표 달성한 경우, 애니메이션 출력")
+                    }
+                }
+            }
+            
+            // 작업 완료시 이 부분이 if문 안으로 들어가야 함
+            let challengeCompletionVC = UIViewController().initViewControllerstoryBoardName(
+                storyBoardName: UIViewController.mainStroyBoard, viewControllerId: "challengeCompletionVC")
+            navigationController?.pushViewController(challengeCompletionVC, animated: false)
+
 
         }
     }

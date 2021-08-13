@@ -28,6 +28,8 @@
 		0026128825FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026128725FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift */; };
 		0054BD2D26161E3C00ADFB29 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054BD2C26161E3C00ADFB29 /* Int.swift */; };
 		0054BD312616385000ADFB29 /* PatchRestartChallengeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054BD302616385000ADFB29 /* PatchRestartChallengeRequest.swift */; };
+		0059F05826C6B85900F82388 /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059F05726C6B85900F82388 /* GlobalSettings.swift */; };
+		0059F05A26C6C07400F82388 /* GetUserBookReviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059F05926C6C07400F82388 /* GetUserBookReviewList.swift */; };
 		005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */; };
 		007CF5F32603192800F530AD /* ReviewImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007CF5F22603192800F530AD /* ReviewImageView.xib */; };
 		007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007CF5F7260321E800F530AD /* ReviewImageView.swift */; };
@@ -236,6 +238,8 @@
 		0026128725FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReadingStatusPopupViewController.swift; sourceTree = "<group>"; };
 		0054BD2C26161E3C00ADFB29 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		0054BD302616385000ADFB29 /* PatchRestartChallengeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchRestartChallengeRequest.swift; sourceTree = "<group>"; };
+		0059F05726C6B85900F82388 /* GlobalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
+		0059F05926C6C07400F82388 /* GetUserBookReviewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserBookReviewList.swift; sourceTree = "<group>"; };
 		005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReadingPercentPopupViewController.swift; sourceTree = "<group>"; };
 		007CF5F22603192800F530AD /* ReviewImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewImageView.xib; sourceTree = "<group>"; };
 		007CF5F7260321E800F530AD /* ReviewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImageView.swift; sourceTree = "<group>"; };
@@ -447,6 +451,7 @@
 			isa = PBXGroup;
 			children = (
 				0011538126BEDD07006B17AA /* DeviceManager.swift */,
+				0059F05726C6B85900F82388 /* GlobalSettings.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -555,6 +560,7 @@
 				00FF3761260A2FBF00529570 /* PatchReadingGoalRequest.swift */,
 				00FF374E2609157300529570 /* PostChallengeBookRequest.swift */,
 				00FF3774260A678200529570 /* PostReadingBookRequest.swift */,
+				0059F05926C6C07400F82388 /* GetUserBookReviewList.swift */,
 				00FF3778260A67EC00529570 /* GetUserBookReviewRequest.swift */,
 				00FF377C260A685700529570 /* PostReportReviewRequest.swift */,
 				00C55F792604FB16002848AB /* ReadingGoalResponse.swift */,
@@ -773,8 +779,8 @@
 		59E1904B2608848500D07656 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				0011538026BEDCED006B17AA /* Common */,
 				00D8632E25FF867F00E9EFF9 /* Constants.swift */,
+				0011538026BEDCED006B17AA /* Common */,
 				00838FC425F3607100340AE0 /* Extensions */,
 				D67C655F25E4EFB200F15290 /* Font */,
 			);
@@ -1249,6 +1255,7 @@
 				597F82C1260C9D4800777A92 /* CheckTokenResponse.swift in Sources */,
 				D6BEFD4C2611D8FB00866D45 /* UserGraphResponse.swift in Sources */,
 				59A967DA26036CC9000EE89F /* LoginNavViewController.swift in Sources */,
+				0059F05826C6B85900F82388 /* GlobalSettings.swift in Sources */,
 				0011537B26BAF55A006B17AA /* LoginManager.swift in Sources */,
 				59F4F2F525F9B9A300E82417 /* ReviewBookInfoCell.swift in Sources */,
 				598398AE2610A743005AFB6A /* JoinResponse.swift in Sources */,
@@ -1321,6 +1328,7 @@
 				D68DA45F2611595600267BBE /* FeedCell.swift in Sources */,
 				00C55F7A2604FB16002848AB /* ReadingGoalResponse.swift in Sources */,
 				59F4F32825F9F0B200E82417 /* SearchBookViewController.swift in Sources */,
+				0059F05A26C6C07400F82388 /* GetUserBookReviewList.swift in Sources */,
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
 				007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */,
 				D6C1C004260B0D52008EE7FE /* EditProfileRequest.swift in Sources */,

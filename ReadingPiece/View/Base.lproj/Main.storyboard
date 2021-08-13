@@ -1265,7 +1265,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQx-yy-Mwx">
-                                                        <rect key="frame" x="310" y="1" width="19" height="22"/>
+                                                        <rect key="frame" x="317" y="1" width="12" height="22"/>
                                                         <state key="normal" image="addPictureIcon"/>
                                                         <connections>
                                                             <action selector="addImage:" destination="snK-Qc-9UX" eventType="touchUpInside" id="qB3-zd-Heb"/>
@@ -1491,13 +1491,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UW1-D1-3J3">
-                                <rect key="frame" x="24" y="25" width="16" height="22"/>
-                                <state key="normal" image="clearGlyphSearchBar"/>
-                                <connections>
-                                    <action selector="closeModal:" destination="6Tc-t8-UJj" eventType="touchUpInside" id="bK3-dT-vw3"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3EC-BS-h4p">
                                 <rect key="frame" x="99" y="90" width="177" height="273"/>
                                 <subviews>
@@ -1537,7 +1530,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1h-ZI-g5n">
-                                <rect key="frame" x="30" y="668.5" width="315" height="36"/>
+                                <rect key="frame" x="30" y="668" width="315" height="36"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="16"/>
                                 <state key="normal" title="계속하기">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1549,6 +1542,13 @@
                             <skView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OA2-fP-V8F">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
                             </skView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UW1-D1-3J3">
+                                <rect key="frame" x="24" y="25" width="16" height="22"/>
+                                <state key="normal" image="clearGlyphSearchBar"/>
+                                <connections>
+                                    <action selector="closeModal:" destination="6Tc-t8-UJj" eventType="touchUpInside" id="bK3-dT-vw3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Dvd-sT-Rms"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1591,7 +1591,7 @@
     </scenes>
     <resources>
         <image name="XButton" width="15.5" height="15"/>
-        <image name="addPictureIcon" width="19" height="19"/>
+        <image name="addPictureIcon" width="12" height="12"/>
         <image name="challenge" width="25" height="25"/>
         <image name="challengeCake" width="191.5" height="127.5"/>
         <image name="clearGlyphSearchBar" width="16" height="16"/>
