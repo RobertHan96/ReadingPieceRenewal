@@ -84,6 +84,10 @@
 		5913B23E25EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23725EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf */; };
 		591D1E912610BA3D004597B1 /* CloseAccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D1E902610BA3D004597B1 /* CloseAccountRequest.swift */; };
 		591D1E942610BA4C004597B1 /* CloseAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D1E932610BA4C004597B1 /* CloseAccountResponse.swift */; };
+		591EDC6026C79C1F00D2A702 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591EDC5E26C79C1F00D2A702 /* OnboardingViewController.swift */; };
+		591EDC6126C79C1F00D2A702 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591EDC5F26C79C1F00D2A702 /* OnboardingViewController.xib */; };
+		591EDC6326C79E7400D2A702 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591EDC6226C79E7400D2A702 /* OnboardingCollectionViewCell.swift */; };
+		591EDC6926C807CF00D2A702 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591EDC6826C807CE00D2A702 /* UIScrollView.swift */; };
 		5920F966260F2D4200C2C1B4 /* GetReviewEditRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5920F965260F2D4200C2C1B4 /* GetReviewEditRequest.swift */; };
 		5920F969260F7B9F00C2C1B4 /* PatchReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5920F968260F7B9F00C2C1B4 /* PatchReviewRequest.swift */; };
 		5925BFC82610CD9D00BDDD18 /* PasswordResetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925BFC72610CD9D00BDDD18 /* PasswordResetRequest.swift */; };
@@ -294,6 +298,10 @@
 		5913B23725EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
 		591D1E902610BA3D004597B1 /* CloseAccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseAccountRequest.swift; sourceTree = "<group>"; };
 		591D1E932610BA4C004597B1 /* CloseAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseAccountResponse.swift; sourceTree = "<group>"; };
+		591EDC5E26C79C1F00D2A702 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		591EDC5F26C79C1F00D2A702 /* OnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
+		591EDC6226C79E7400D2A702 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		591EDC6826C807CE00D2A702 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 		5920F965260F2D4200C2C1B4 /* GetReviewEditRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewEditRequest.swift; sourceTree = "<group>"; };
 		5920F968260F7B9F00C2C1B4 /* PatchReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchReviewRequest.swift; sourceTree = "<group>"; };
 		5925BFC72610CD9D00BDDD18 /* PasswordResetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetRequest.swift; sourceTree = "<group>"; };
@@ -454,6 +462,9 @@
 		0024104426B7FF8A00946297 /* WalkThrough */ = {
 			isa = PBXGroup;
 			children = (
+				591EDC5E26C79C1F00D2A702 /* OnboardingViewController.swift */,
+				591EDC5F26C79C1F00D2A702 /* OnboardingViewController.xib */,
+				591EDC6226C79E7400D2A702 /* OnboardingCollectionViewCell.swift */,
 				0024104526B7FFA300946297 /* ThirdIntroViewController.swift */,
 				0024104726B835A200946297 /* WalkThroughViewController.swift */,
 				0024104926B83BFD00946297 /* SecondIntroViewController.swift */,
@@ -489,6 +500,7 @@
 				0026127825FB2501000B40D1 /* CALayer.swift */,
 				597F82B4260C7EED00777A92 /* String.swift */,
 				0054BD2C26161E3C00ADFB29 /* Int.swift */,
+				591EDC6826C807CE00D2A702 /* UIScrollView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1174,6 +1186,7 @@
 				59F4F2FB25F9BD8600E82417 /* ReviewRatingCell.xib in Resources */,
 				599D3AB725F11AB30085F134 /* ReviewCell.xib in Resources */,
 				D68DA4602611595600267BBE /* FeedCell.xib in Resources */,
+				591EDC6126C79C1F00D2A702 /* OnboardingViewController.xib in Resources */,
 				D6A7D3DF260606650098EA03 /* MyMenuCell.xib in Resources */,
 				D6509DE725EAC87F000D7160 /* Login.storyboard in Resources */,
 				D67C657C25E5717300F15290 /* My.storyboard in Resources */,
@@ -1270,7 +1283,9 @@
 				D6BEFD462611D8DF00866D45 /* UserStatisticsResponse.swift in Sources */,
 				00C55F6E26048AC6002848AB /* SignUpResponse.swift in Sources */,
 				59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */,
+				591EDC6326C79E7400D2A702 /* OnboardingCollectionViewCell.swift in Sources */,
 				D6A7D3E9260607720098EA03 /* StatisticsViewController.swift in Sources */,
+				591EDC6026C79C1F00D2A702 /* OnboardingViewController.swift in Sources */,
 				0026127925FB2501000B40D1 /* CALayer.swift in Sources */,
 				0024104626B7FFA300946297 /* ThirdIntroViewController.swift in Sources */,
 				D66CE6E8260A396E003BB131 /* Profile.swift in Sources */,
@@ -1317,6 +1332,7 @@
 				D6C1C02B260B9828008EE7FE /* MyPieceResponse.swift in Sources */,
 				596D4D9A260AD82C00E137F3 /* PostReviewRequest.swift in Sources */,
 				5961DE492610140C00EF8745 /* EmailRequest.swift in Sources */,
+				591EDC6926C807CF00D2A702 /* UIScrollView.swift in Sources */,
 				596D4D70260A1EFC00E137F3 /* GetJournalRequest.swift in Sources */,
 				D68DA45F2611595600267BBE /* FeedCell.swift in Sources */,
 				00C55F7A2604FB16002848AB /* ReadingGoalResponse.swift in Sources */,
