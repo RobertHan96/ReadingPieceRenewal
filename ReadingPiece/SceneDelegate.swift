@@ -93,11 +93,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func showWalkThroughView(windowScene: UIWindowScene) {
-        let storyboard = UIStoryboard(name: "WalkThrough", bundle: nil)
-        let walkThroughViewController = storyboard.instantiateViewController(withIdentifier: "walkThrough")
-        let navigationController = UINavigationController(rootViewController: walkThroughViewController)
+        let onboardingViewController = OnboardingViewController()
+        
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = navigationController
+        window.rootViewController = onboardingViewController
         self.window = window
         window.makeKeyAndVisible()
         window.overrideUserInterfaceStyle = .light
