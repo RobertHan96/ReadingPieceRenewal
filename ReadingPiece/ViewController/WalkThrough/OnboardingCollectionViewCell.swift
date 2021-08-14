@@ -20,7 +20,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.NotoSans(.bold, size: 30)
+        label.font = UIFont(name: "NanumSquareRoundEB", size: 30) ?? UIFont.NotoSans(.bold, size: 30)
         label.textColor = .black
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +29,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     
     let descLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.NotoSans(.regular, size: 16)
+        label.font = UIFont(name: "NanumSquareRegular", size: 16) ?? UIFont.NotoSans(.regular, size: 16)
         label.textColor = .charcoal
         label.textAlignment = .center
         label.numberOfLines = 0

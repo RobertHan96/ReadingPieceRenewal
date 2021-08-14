@@ -12,10 +12,6 @@
 		0011537F26BECF41006B17AA /* PatchReadingTimeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011537E26BECF40006B17AA /* PatchReadingTimeRequest.swift */; };
 		0011538226BEDD07006B17AA /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011538126BEDD07006B17AA /* DeviceManager.swift */; };
 		0011538826BF7DE0006B17AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0011538726BF7DE0006B17AA /* GoogleService-Info.plist */; };
-		0024104226B7FD6200946297 /* WalkThrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0024104126B7FD6200946297 /* WalkThrough.storyboard */; };
-		0024104626B7FFA300946297 /* ThirdIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024104526B7FFA300946297 /* ThirdIntroViewController.swift */; };
-		0024104826B835A200946297 /* WalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024104726B835A200946297 /* WalkThroughViewController.swift */; };
-		0024104A26B83BFD00946297 /* SecondIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024104926B83BFD00946297 /* SecondIntroViewController.swift */; };
 		0026126D25FB23BF000B40D1 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026126B25FB23BF000B40D1 /* ChallengeTableViewCell.swift */; };
 		0026126E25FB23BF000B40D1 /* ChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0026126C25FB23BF000B40D1 /* ChallengeTableViewCell.xib */; };
 		0026127225FB244C000B40D1 /* DaillyReadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026127025FB244C000B40D1 /* DaillyReadingTableViewCell.swift */; };
@@ -88,6 +84,8 @@
 		591EDC6126C79C1F00D2A702 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591EDC5F26C79C1F00D2A702 /* OnboardingViewController.xib */; };
 		591EDC6326C79E7400D2A702 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591EDC6226C79E7400D2A702 /* OnboardingCollectionViewCell.swift */; };
 		591EDC6926C807CF00D2A702 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591EDC6826C807CE00D2A702 /* UIScrollView.swift */; };
+		591EDC6B26C8123400D2A702 /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 591EDC6A26C8123400D2A702 /* NanumSquareRoundEB.ttf */; };
+		591EDC6D26C8127E00D2A702 /* NanumSquareRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 591EDC6C26C8127E00D2A702 /* NanumSquareRegular.ttf */; };
 		5920F966260F2D4200C2C1B4 /* GetReviewEditRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5920F965260F2D4200C2C1B4 /* GetReviewEditRequest.swift */; };
 		5920F969260F7B9F00C2C1B4 /* PatchReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5920F968260F7B9F00C2C1B4 /* PatchReviewRequest.swift */; };
 		5925BFC82610CD9D00BDDD18 /* PasswordResetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925BFC72610CD9D00BDDD18 /* PasswordResetRequest.swift */; };
@@ -224,10 +222,6 @@
 		0011537E26BECF40006B17AA /* PatchReadingTimeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchReadingTimeRequest.swift; sourceTree = "<group>"; };
 		0011538126BEDD07006B17AA /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		0011538726BF7DE0006B17AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		0024104126B7FD6200946297 /* WalkThrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WalkThrough.storyboard; sourceTree = "<group>"; };
-		0024104526B7FFA300946297 /* ThirdIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdIntroViewController.swift; sourceTree = "<group>"; };
-		0024104726B835A200946297 /* WalkThroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughViewController.swift; sourceTree = "<group>"; };
-		0024104926B83BFD00946297 /* SecondIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondIntroViewController.swift; sourceTree = "<group>"; };
 		0026126B25FB23BF000B40D1 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		0026126C25FB23BF000B40D1 /* ChallengeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTableViewCell.xib; sourceTree = "<group>"; };
 		0026127025FB244C000B40D1 /* DaillyReadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaillyReadingTableViewCell.swift; sourceTree = "<group>"; };
@@ -302,6 +296,8 @@
 		591EDC5F26C79C1F00D2A702 /* OnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
 		591EDC6226C79E7400D2A702 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		591EDC6826C807CE00D2A702 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
+		591EDC6A26C8123400D2A702 /* NanumSquareRoundEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundEB.ttf; sourceTree = "<group>"; };
+		591EDC6C26C8127E00D2A702 /* NanumSquareRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRegular.ttf; sourceTree = "<group>"; };
 		5920F965260F2D4200C2C1B4 /* GetReviewEditRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewEditRequest.swift; sourceTree = "<group>"; };
 		5920F968260F7B9F00C2C1B4 /* PatchReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchReviewRequest.swift; sourceTree = "<group>"; };
 		5925BFC72610CD9D00BDDD18 /* PasswordResetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetRequest.swift; sourceTree = "<group>"; };
@@ -465,9 +461,6 @@
 				591EDC5E26C79C1F00D2A702 /* OnboardingViewController.swift */,
 				591EDC5F26C79C1F00D2A702 /* OnboardingViewController.xib */,
 				591EDC6226C79E7400D2A702 /* OnboardingCollectionViewCell.swift */,
-				0024104526B7FFA300946297 /* ThirdIntroViewController.swift */,
-				0024104726B835A200946297 /* WalkThroughViewController.swift */,
-				0024104926B83BFD00946297 /* SecondIntroViewController.swift */,
 			);
 			path = WalkThrough;
 			sourceTree = "<group>";
@@ -975,6 +968,8 @@
 				D642423B260916F200E732D4 /* Roboto-Regular.ttf */,
 				D6424239260916E000E732D4 /* NotoSans-Medium.ttf */,
 				59F4F2ED25F9A5FA00E82417 /* NotoSans-SemiBold.ttf */,
+				591EDC6C26C8127E00D2A702 /* NanumSquareRegular.ttf */,
+				591EDC6A26C8123400D2A702 /* NanumSquareRoundEB.ttf */,
 				5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */,
 				5913B23625EF2E4C002AAA8C /* NotoSansCJKkr-Black.otf */,
 				5913B23225EF2E49002AAA8C /* NotoSansCJKkr-Bold.otf */,
@@ -1033,7 +1028,6 @@
 				D678693225F541B200DBB59C /* Goal */,
 				D6288D2D25E2B5DB00D73A61 /* Main.storyboard */,
 				D67C657825E5715F00F15290 /* Community.storyboard */,
-				0024104126B7FD6200946297 /* WalkThrough.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1170,6 +1164,7 @@
 				59F4F26B25F657A600E82417 /* ReviewDropDownCell.xib in Resources */,
 				00C3418825FD1873009B2A34 /* Firecracker.sks in Resources */,
 				5913B23825EF2E4D002AAA8C /* NotoSansCJKkr-Regular.otf in Resources */,
+				591EDC6B26C8123400D2A702 /* NanumSquareRoundEB.ttf in Resources */,
 				599D3AD125F26EC00085F134 /* FullReviewCell.xib in Resources */,
 				59F4F2C025F902B200E82417 /* CreateReviewViewController.xib in Resources */,
 				00C55F5826032AF1002848AB /* ReviewImageCell.xib in Resources */,
@@ -1177,6 +1172,7 @@
 				599D3AC225F1E32B0085F134 /* ReviewHeaderCell.xib in Resources */,
 				5913B23C25EF2E4D002AAA8C /* NotoSansCJKkr-Thin.otf in Resources */,
 				5913B23E25EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf in Resources */,
+				591EDC6D26C8127E00D2A702 /* NanumSquareRegular.ttf in Resources */,
 				0011538826BF7DE0006B17AA /* GoogleService-Info.plist in Resources */,
 				59F4F2F625F9B9A300E82417 /* ReviewBookInfoCell.xib in Resources */,
 				D678693725F5426400DBB59C /* ReviewTableViewCell.xib in Resources */,
@@ -1204,7 +1200,6 @@
 				5913B22F25EF2E0C002AAA8C /* GmarketSansMedium.otf in Resources */,
 				00C3418925FD1873009B2A34 /* Assets.xcassets in Resources */,
 				5913B23925EF2E4D002AAA8C /* NotoSansCJKkr-Bold.otf in Resources */,
-				0024104226B7FD6200946297 /* WalkThrough.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1287,7 +1282,6 @@
 				D6A7D3E9260607720098EA03 /* StatisticsViewController.swift in Sources */,
 				591EDC6026C79C1F00D2A702 /* OnboardingViewController.swift in Sources */,
 				0026127925FB2501000B40D1 /* CALayer.swift in Sources */,
-				0024104626B7FFA300946297 /* ThirdIntroViewController.swift in Sources */,
 				D66CE6E8260A396E003BB131 /* Profile.swift in Sources */,
 				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,
 				00FF3779260A67EC00529570 /* GetUserBookReviewRequest.swift in Sources */,
@@ -1318,7 +1312,6 @@
 				D67C658D25E5B08300F15290 /* MyNavViewController.swift in Sources */,
 				597F82BE260C9D1000777A92 /* CheckTokenRequest.swift in Sources */,
 				591D1E942610BA4C004597B1 /* CloseAccountResponse.swift in Sources */,
-				0024104826B835A200946297 /* WalkThroughViewController.swift in Sources */,
 				00838FCE25F362DD00340AE0 /* TimerViewController.swift in Sources */,
 				D615DF922608F0E8006021C4 /* ProfileEditViewController.swift in Sources */,
 				00838FC625F3607A00340AE0 /* Colors.swift in Sources */,
@@ -1415,7 +1408,6 @@
 				599D3A9825F08A690085F134 /* MenuCell.swift in Sources */,
 				00C55F772604FB0B002848AB /* PostReadingGoalRequest.swift in Sources */,
 				59E18FFC26060FFB00D07656 /* UITableView.swift in Sources */,
-				0024104A26B83BFD00946297 /* SecondIntroViewController.swift in Sources */,
 				59393BBF260CC70E00A2CE30 /* ReviewResponse.swift in Sources */,
 				D6288D2A25E2B5DB00D73A61 /* SceneDelegate.swift in Sources */,
 				D6F153E925F9395B0044900E /* NetworkAPI.swift in Sources */,

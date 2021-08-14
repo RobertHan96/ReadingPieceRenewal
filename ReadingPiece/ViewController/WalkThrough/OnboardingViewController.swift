@@ -35,6 +35,8 @@ class OnboardingViewController: UIViewController {
         
         pageControl.numberOfPages = 3
         pageControl.currentPage = currentPage
+        pageControl.isUserInteractionEnabled = false
+        //pageControl.addTarget(self, action: #selector(pageControlTapHandler(sender:)), for: .touchUpInside)
     }
     
     private func setupUI() {
@@ -44,6 +46,13 @@ class OnboardingViewController: UIViewController {
         nextButton.layer.cornerRadius = nextButton.frame.height / 2
         nextButton.backgroundColor = .melon
         skipButton.tintColor = .melon
+        
+    }
+    
+    @objc func pageControlTapHandler(sender: UIPageControl) {
+        print("sender.currentPage : ", sender.currentPage)
+        currentPage = sender.currentPage
+        collectionView.scrollTo(horizontalPage: currentPage, animated: true)
         
     }
     

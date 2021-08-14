@@ -20,8 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let windowScene = scene as? UIWindowScene {
             if hasAppBeenLaunchedBefore() == true {
-                showWalkThroughView(windowScene: windowScene)
-                //moveToMainView(windowScene: windowScene)
+                moveToMainView(windowScene: windowScene)
             } else {
                 showWalkThroughView(windowScene: windowScene)
             }

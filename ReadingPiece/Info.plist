@@ -35,6 +35,8 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>NanumSquareRegular.ttf</string>
+		<string>NanumSquareRoundEB.ttf</string>
 		<string>NotoSans-Medium.ttf</string>
 		<string>Roboto-Medium.ttf</string>
 		<string>Roboto-Regular.ttf</string>
