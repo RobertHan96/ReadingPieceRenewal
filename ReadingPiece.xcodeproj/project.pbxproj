@@ -27,6 +27,8 @@
 		0059F05826C6B85900F82388 /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059F05726C6B85900F82388 /* GlobalSettings.swift */; };
 		0059F05A26C6C07400F82388 /* GetUserBookReviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059F05926C6C07400F82388 /* GetUserBookReviewList.swift */; };
 		0059F05E26C8EA5400F82388 /* IBDesginable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059F05D26C8EA5400F82388 /* IBDesginable.swift */; };
+		0059F06126C9482800F82388 /* StringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059F06026C9482800F82388 /* StringManager.swift */; };
+		0059F06326C9492100F82388 /* MainViewNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059F06226C9492100F82388 /* MainViewNetworkManager.swift */; };
 		005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */; };
 		007CF5F32603192800F530AD /* ReviewImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007CF5F22603192800F530AD /* ReviewImageView.xib */; };
 		007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007CF5F7260321E800F530AD /* ReviewImageView.swift */; };
@@ -46,8 +48,6 @@
 		00C3418925FD1873009B2A34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C3418725FD1873009B2A34 /* Assets.xcassets */; };
 		00C55F5726032AF1002848AB /* ReviewImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C55F5526032AF1002848AB /* ReviewImageCell.swift */; };
 		00C55F5826032AF1002848AB /* ReviewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00C55F5626032AF1002848AB /* ReviewImageCell.xib */; };
-		00C55F6B26048AA0002848AB /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C55F6A26048AA0002848AB /* SignUpRequest.swift */; };
-		00C55F6E26048AC6002848AB /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C55F6D26048AC6002848AB /* SignUpResponse.swift */; };
 		00C55F732604F9CE002848AB /* Goal+Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C55F722604F9CE002848AB /* Goal+Book.swift */; };
 		00C55F772604FB0B002848AB /* PostReadingGoalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C55F762604FB0B002848AB /* PostReadingGoalRequest.swift */; };
 		00C55F7A2604FB16002848AB /* ReadingGoalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C55F792604FB16002848AB /* ReadingGoalResponse.swift */; };
@@ -240,6 +240,8 @@
 		0059F05726C6B85900F82388 /* GlobalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
 		0059F05926C6C07400F82388 /* GetUserBookReviewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserBookReviewList.swift; sourceTree = "<group>"; };
 		0059F05D26C8EA5400F82388 /* IBDesginable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesginable.swift; sourceTree = "<group>"; };
+		0059F06026C9482800F82388 /* StringManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringManager.swift; sourceTree = "<group>"; };
+		0059F06226C9492100F82388 /* MainViewNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewNetworkManager.swift; sourceTree = "<group>"; };
 		005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReadingPercentPopupViewController.swift; sourceTree = "<group>"; };
 		007CF5F22603192800F530AD /* ReviewImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewImageView.xib; sourceTree = "<group>"; };
 		007CF5F7260321E800F530AD /* ReviewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImageView.swift; sourceTree = "<group>"; };
@@ -260,8 +262,6 @@
 		00C3418725FD1873009B2A34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00C55F5526032AF1002848AB /* ReviewImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImageCell.swift; sourceTree = "<group>"; };
 		00C55F5626032AF1002848AB /* ReviewImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewImageCell.xib; sourceTree = "<group>"; };
-		00C55F6A26048AA0002848AB /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
-		00C55F6D26048AC6002848AB /* SignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponse.swift; sourceTree = "<group>"; };
 		00C55F722604F9CE002848AB /* Goal+Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+Book.swift"; sourceTree = "<group>"; };
 		00C55F762604FB0B002848AB /* PostReadingGoalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReadingGoalRequest.swift; sourceTree = "<group>"; };
 		00C55F792604FB16002848AB /* ReadingGoalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingGoalResponse.swift; sourceTree = "<group>"; };
@@ -456,9 +456,11 @@
 		0011538026BEDCED006B17AA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0092500C2602605400A930DD /* NetworkManager.swift */,
 				0011538126BEDD07006B17AA /* DeviceManager.swift */,
 				0059F05726C6B85900F82388 /* GlobalSettings.swift */,
 				0059F05D26C8EA5400F82388 /* IBDesginable.swift */,
+				0059F06026C9482800F82388 /* StringManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -471,6 +473,14 @@
 				591EDC6226C79E7400D2A702 /* OnboardingCollectionViewCell.swift */,
 			);
 			path = WalkThrough;
+			sourceTree = "<group>";
+		};
+		0059F05F26C947AE00F82388 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				0059F06226C9492100F82388 /* MainViewNetworkManager.swift */,
+			);
+			path = NetworkManager;
 			sourceTree = "<group>";
 		};
 		007CF5F626031C0800F530AD /* Review */ = {
@@ -534,14 +544,13 @@
 			path = Challenge;
 			sourceTree = "<group>";
 		};
-		0092500B2602604300A930DD /* NetworkManager */ = {
+		0092500B2602604300A930DD /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				0092500C2602605400A930DD /* NetworkManager.swift */,
-				00C55F6A26048AA0002848AB /* SignUpRequest.swift */,
-				00C55F6D26048AC6002848AB /* SignUpResponse.swift */,
+				0059F05F26C947AE00F82388 /* NetworkManager */,
+				D6288D2B25E2B5DB00D73A61 /* ViewController.swift */,
 			);
-			path = NetworkManager;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		00C3419825FF2CBB009B2A34 /* Cell */ = {
@@ -1044,9 +1053,8 @@
 		D6A255FA25E4256000731B10 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D6288D2B25E2B5DB00D73A61 /* ViewController.swift */,
 				0024104426B7FF8A00946297 /* WalkThrough */,
-				0092500B2602604300A930DD /* NetworkManager */,
+				0092500B2602604300A930DD /* Main */,
 				00FF3771260A576B00529570 /* Community */,
 				59A967CD26032BF1000EE89F /* Login */,
 				00838FCC25F362CD00340AE0 /* Challenge */,
@@ -1287,7 +1295,6 @@
 				009250092602588B00A930DD /* FireCrackerScene.swift in Sources */,
 				D6C1C00E260B765D008EE7FE /* Piece.swift in Sources */,
 				D6BEFD462611D8DF00866D45 /* UserStatisticsResponse.swift in Sources */,
-				00C55F6E26048AC6002848AB /* SignUpResponse.swift in Sources */,
 				59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */,
 				591EDC6326C79E7400D2A702 /* OnboardingCollectionViewCell.swift in Sources */,
 				D6A7D3E9260607720098EA03 /* StatisticsViewController.swift in Sources */,
@@ -1329,6 +1336,7 @@
 				D6FF1B6C25F219F000A0B980 /* TimeViewController.swift in Sources */,
 				00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */,
 				599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */,
+				0059F06126C9482800F82388 /* StringManager.swift in Sources */,
 				D68DA45726114C7C00267BBE /* NoticeViewController.swift in Sources */,
 				59393BBB260CC6E500A2CE30 /* GetReviewRequest.swift in Sources */,
 				0026127F25FB2569000B40D1 /* DaillyDiaryWrittenCompletionViewController.swift in Sources */,
@@ -1393,6 +1401,7 @@
 				D6FF1B7125F2408700A0B980 /* SearchViewController.swift in Sources */,
 				D615DF8E2608F0D2006021C4 /* MyEditNavViewController.swift in Sources */,
 				D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */,
+				0059F06326C9492100F82388 /* MainViewNetworkManager.swift in Sources */,
 				D6BEFD3E2611D88700866D45 /* Statistics.swift in Sources */,
 				599D3AB625F11AB30085F134 /* ReviewCell.swift in Sources */,
 				00FF3758260A292000529570 /* Challenge.swift in Sources */,
@@ -1400,7 +1409,6 @@
 				D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */,
 				00C55F5726032AF1002848AB /* ReviewImageCell.swift in Sources */,
 				D6BEFD422611D8CF00866D45 /* UserStatisticsRequest.swift in Sources */,
-				00C55F6B26048AA0002848AB /* SignUpRequest.swift in Sources */,
 				0026127C25FB2547000B40D1 /* DailyGoalCompletionViewController.swift in Sources */,
 				00FF379C260C613200529570 /* RestartChallengeViewController.swift in Sources */,
 				59F4F22F25F5C0B400E82417 /* Review.swift in Sources */,
