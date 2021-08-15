@@ -20,6 +20,7 @@ struct ClientGoal {
     var amount: Int?
     var time: Int?
     var isNewUser: Bool?
+    var isValideChallenge: Bool?
 }
 
 // :MARK 책 관련

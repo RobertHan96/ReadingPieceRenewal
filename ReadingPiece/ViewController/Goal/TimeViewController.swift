@@ -31,22 +31,28 @@ class TimeViewController: UIViewController {
         super.viewDidLoad()
         createDatePicker()
         setupUI()
-
-        print("LOG - 신규유저 여부 \(goal?.isNewUser)")
+        print("LOG - 목표 설정 화면 : 신규유저 여부 \(goal?.isNewUser) \(goal)")
     }
     
     // 화면 상단 - 다음 버튼과 연결된 액션
     @IBAction func NetxToAddBookAction(_ sender: UIBarButtonItem) {
-        // 신규 유저 : 책 추가 화면까지 이동
+        // 신규 유저 : 시간까지 잘 입력한 경우에만 책 추가 화면까지 이동
         if goal?.isNewUser == true && goal?.time != nil  {
             guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
             searchVC.goal = self.goal
             self.navigationController?.pushViewController(searchVC, animated: true)
-            
+            return
+        } else if goal?.isValideChallenge == false {
+            guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
+            searchVC.goal = self.goal
+            self.navigationController?.pushViewController(searchVC, animated: true)
+            return
+        }
         // 신규 유저 & 시간값을 입력하지 않은 경우
-        } else if goal?.time == nil {
+        else if goal?.time == nil {
             self.presentAlert(title: "목표시간을 설정해주세요.", isCancelActionIncluded: false)
-        // 기존 유저 : 목표 수정 후 바로 메인으로 이동
+            return
+        // 기존 유저 : 메인에서 목표 시간만 수정한 경우, 시간만 수정 후 바로 메인으로 이동
         } else {
             patchUserReadingGoal()
         }
@@ -59,14 +65,21 @@ class TimeViewController: UIViewController {
             guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
             searchVC.goal = self.goal
             self.navigationController?.pushViewController(searchVC, animated: true)
-        // 기존 유저 : 목표 수정 후 바로 메인으로 이동
+        // 기존 유저 : 메인에서 목표 시간만 수정한 경우, 시간만 수정 후 바로 메인으로 이동
+        } else if goal?.isValideChallenge == false {
+            guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
+            searchVC.goal = self.goal
+            self.navigationController?.pushViewController(searchVC, animated: true)
+            return
+        // 기존 유저 : 메인에서 목표 시간만 수정한 경우, 시간만 수정 후 바로 메인으로 이동
         } else {
             patchUserReadingGoal()
         }
         
         if goal?.isNewUser == false {
             addGoalButton.setImage(UIImage(named: "completeButton"), for: .normal)
-        } else {
+        }
+        else {
             addGoalButton.setImage(UIImage(named: "selectedNext"), for: .normal)
         }
     }

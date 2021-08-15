@@ -17,10 +17,8 @@ class ViewController: UIViewController {
     let cellId = ReadingBookCollectionViewCell.identifier
     var challengeInfo : ChallengerInfo? { didSet {
         radingBooksCollectionView.reloadData()
-        isExpiredChallenge = challengeInfo?.isExpired ?? true
     }}
     var goalInitializer = 0
-    var isExpiredChallenge = true
 
     // 데이터 파싱 결과에 따라 변경할 이미지
     @IBOutlet weak var userReadingGoalLabel: UILabel!
@@ -202,7 +200,7 @@ class ViewController: UIViewController {
         let period = challenge?.period ?? "D"// 읽기 주기
         let formattedPeriod = getDateFromPeriod(period: period)
         let challengeName = "\(formattedPeriod)에 \(targetBookAmount)권 챌린지"
-        restartChallnegeVC.delegate = self
+        restartChallnegeVC.buttonsDelegate = self
         restartChallnegeVC.challengeName = challengeName
         restartChallnegeVC.modalTransitionStyle = .crossDissolve
         restartChallnegeVC.modalPresentationStyle = .overFullScreen
@@ -317,11 +315,25 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
 }
 
-// 챌린지 재시작 팝업 종료 이후, 목표설정 화면으로 이동하기 위한 프로토콜
-extension ViewController: ViewChangeDelegate {
-    func dismissViewController(_ controller: UIViewController) {
-        let modifyReadingGaolVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
+// 챌린지 재시작 팝업에서 선택한 버튼에 따른 동작을 처리하는 protocol
+extension ViewController: RestartChallengePopupButtonsActionDelegate {
+    func reTryChallengeButtonClicked() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.initMainView()
+        }
+    }
+    
+    func closeButtonClicked() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.showRestartChallengePopup()
+        }
+    }
+    
+    func reStartButtonClicked() {
+        guard let modifyReadingGaolVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TermViewController") as? TermViewController
+        else { return }
         modifyReadingGaolVC.initializer = 1
+        modifyReadingGaolVC.isValidChallenge = false
         self.navigationController?.pushViewController(modifyReadingGaolVC, animated: true)
     }
 }
