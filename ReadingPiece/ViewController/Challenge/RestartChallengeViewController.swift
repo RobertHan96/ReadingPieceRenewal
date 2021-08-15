@@ -17,7 +17,6 @@ protocol ViewChangeDelegate: class {
 class RestartChallengeViewController: UIViewController {
     var challengeName: String?
     var delegate: ViewChangeDelegate?
-    var challengeValidationDelegate: ChallengeValidationDelegate?
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
 
     @IBOutlet weak var popupView: UIView!
@@ -85,7 +84,8 @@ class RestartChallengeViewController: UIViewController {
                     case 1000:
                         print("LOG - 챌린지 재시작 성공")
                         self.dismiss(animated: true, completion: nil)
-                        //self.navigationController?.popToRootViewController(animated: true)
+                        let vc = ViewController()
+                        vc.isExpiredChallenge = false
                     case 2263:
                         self.presentAlert(title: "아직 진행 중인 목표가 있습니다! 다시 확인해주세요.", isCancelActionIncluded: false)
                     default:

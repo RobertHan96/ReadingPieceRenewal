@@ -76,14 +76,12 @@ class ChallengeCompletionViewController: UIViewController {
     }
 
     @IBAction func continueReading(_ sender: UIButton) {
-        print("TT")
         // 챌린지 달성 이후, [계속하기] 버튼 선택시 메인 화면으로 rootViewController 변경
         let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
         UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)
     }
     
     @IBAction func closeModal(_ sender: UIButton) {
-        print("TT")
         // 계속하기화 마찬가지로 [X] 버튼 선택했을 때도 메인 화면으로 rootViewController 변경
         let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
         UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)

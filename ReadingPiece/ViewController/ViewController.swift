@@ -17,8 +17,10 @@ class ViewController: UIViewController {
     let cellId = ReadingBookCollectionViewCell.identifier
     var challengeInfo : ChallengerInfo? { didSet {
         radingBooksCollectionView.reloadData()
+        isExpiredChallenge = challengeInfo?.isExpired ?? true
     }}
     var goalInitializer = 0
+    var isExpiredChallenge = true
 
     // 데이터 파싱 결과에 따라 변경할 이미지
     @IBOutlet weak var userReadingGoalLabel: UILabel!
