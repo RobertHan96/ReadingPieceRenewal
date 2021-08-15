@@ -33,6 +33,7 @@ class ChallengeCompletionViewController: UIViewController {
         continueButton.makeRoundedButtnon("계속하기", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
         challengeNameLabel.textColor = .main
         challengeCakeNameLabel.textColor = .darkgrey
+        GlobalSettings.challengeCompletionInformation.increaseAnimationShownCount()
     }
     
     func postNewUserCakeType() {

@@ -16,7 +16,7 @@ protocol ViewChangeDelegate: class {
 
 class RestartChallengeViewController: UIViewController {
     var challengeName: String?
-    var delegate: ViewChangeDelegate!
+    var delegate: ViewChangeDelegate?
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
 
     @IBOutlet weak var popupView: UIView!
@@ -68,7 +68,7 @@ class RestartChallengeViewController: UIViewController {
 
         guard let pvc = self.presentingViewController else { return }
         self.dismiss(animated: true) {
-            self.delegate.dismissViewController(self)
+            self.delegate?.dismissViewController(self)
         }
     }
     
@@ -84,7 +84,8 @@ class RestartChallengeViewController: UIViewController {
                     case 1000:
                         print("LOG - 챌린지 재시작 성공")
                         self.dismiss(animated: true, completion: nil)
-                        //self.navigationController?.popToRootViewController(animated: true)
+                        let vc = ViewController()
+                        vc.isExpiredChallenge = false
                     case 2263:
                         self.presentAlert(title: "아직 진행 중인 목표가 있습니다! 다시 확인해주세요.", isCancelActionIncluded: false)
                     default:
@@ -97,23 +98,5 @@ class RestartChallengeViewController: UIViewController {
                     self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }
-    }
-}
-
-@IBDesignable class PaddingLabel: UILabel {
-
-    @IBInspectable var topInset: CGFloat = 5.0
-    @IBInspectable var bottomInset: CGFloat = 5.0
-    @IBInspectable var leftInset: CGFloat = 8.0
-    @IBInspectable var rightInset: CGFloat = 8.0
-    
-    override func drawText(in rect: CGRect) {
-        let insets = UIEdgeInsets.init(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
-        super.drawText(in: rect.inset(by: insets))
-    }
-
-    override var intrinsicContentSize: CGSize {
-    let size = super.intrinsicContentSize
-    return CGSize(width: size.width + leftInset + rightInset, height: size.height + topInset + bottomInset)
     }
 }

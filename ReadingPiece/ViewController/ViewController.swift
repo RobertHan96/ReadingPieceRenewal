@@ -12,14 +12,15 @@ import KeychainSwift
 import FirebaseAnalytics
 
 class ViewController: UIViewController {
-    
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let defaults = UserDefaults.standard
     let cellId = ReadingBookCollectionViewCell.identifier
     var challengeInfo : ChallengerInfo? { didSet {
         radingBooksCollectionView.reloadData()
+        isExpiredChallenge = challengeInfo?.isExpired ?? true
     }}
     var goalInitializer = 0
+    var isExpiredChallenge = true
 
     // 데이터 파싱 결과에 따라 변경할 이미지
     @IBOutlet weak var userReadingGoalLabel: UILabel!
@@ -77,12 +78,22 @@ class ViewController: UIViewController {
 
 
     @IBAction func startReadingAction(_ sender: UIButton) {
+        if challengeInfo?.isExpired == true {
+            showRestartChallengePopup()
+            return
+        }
+
         let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
         timerVC.challengeInfo = self.challengeInfo
         self.navigationController?.pushViewController(timerVC, animated: true)
     }
 
     @IBAction func modifyReadingGoalAction(_ sender: UIButton) {
+        if challengeInfo?.isExpired == true {
+            showRestartChallengePopup()
+            return
+        }
+
         // 챌린지 현황 정보가 있다면 기존 유저이므로, initializer를 기준으로 목표 추가/수정 여부 구분
         // 신규유저-목표 추가 : 0, 기존유저-목표 변경 : 1
         if self.challengeInfo != nil {
@@ -97,8 +108,26 @@ class ViewController: UIViewController {
     }
     
     @IBAction func addReadingBookAction(_ sender: UIButton) {
+        if challengeInfo?.isExpired == true {
+            showRestartChallengePopup()
+            return
+        }
+
         let bookSettingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "bookSettingVC") as! BookSettingViewController
         self.navigationController?.pushViewController(bookSettingVC, animated: true)
+    }
+    
+    @objc func modifiyTargetTimeAction(_ sender: UITapGestureRecognizer) {
+        if challengeInfo?.isExpired == true {
+            showRestartChallengePopup()
+            return
+        }
+
+        guard let modifyReadingTimeVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TimeViewController") as? TimeViewController else { return}
+        // 목표 독서 시간 변경시 필요한 값들은 임의로 0 할당, 신규 유저 여부만 체크해서 전달
+        modifyReadingTimeVC.goal = ClientGoal(period: "", amount: 0, time: 0, isNewUser: false)
+        modifyReadingTimeVC.goalid = challengeInfo?.readingBook.first?.goalId ?? 0
+        self.navigationController?.pushViewController(modifyReadingTimeVC, animated: true)
     }
     
     private func setupUI() {
@@ -109,16 +138,6 @@ class ViewController: UIViewController {
         let modifiyTargetTimeGesture = UITapGestureRecognizer(target: self, action: #selector(modifiyTargetTimeAction(_:)))
         targetTimeLabel.addGestureRecognizer(modifiyTargetTimeGesture)
     }
-    
-    @objc func modifiyTargetTimeAction(_ sender: UITapGestureRecognizer) {
-        print("LOG - 목표시간 변경")
-        guard let modifyReadingTimeVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TimeViewController") as? TimeViewController else { return}
-        // 목표 독서 시간 변경시 필요한 값들은 임의로 0 할당, 신규 유저 여부만 체크해서 전달
-        modifyReadingTimeVC.goal = ClientGoal(period: "", amount: 0, time: 0, isNewUser: false)
-        modifyReadingTimeVC.goalid = challengeInfo?.readingBook.first?.goalId ?? 0
-        self.navigationController?.pushViewController(modifyReadingTimeVC, animated: true)
-    }
-
     
     func makeDaillyReadingViewShadow() {
         dailyReadingView.layer.shadowRadius = 5
@@ -176,7 +195,8 @@ class ViewController: UIViewController {
 
     func showRestartChallengePopup() {
         print("showRestartChallengePopup() is called")
-        let restartChallnegeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "restartChallengeVC") as! RestartChallengeViewController
+        guard let restartChallnegeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "restartChallengeVC") as?
+            RestartChallengeViewController else { return }
         let challenge = challengeInfo?.todayChallenge
         let targetBookAmount = challenge?.amount ?? 0// 읽기 목표 권수
         let period = challenge?.period ?? "D"// 읽기 주기
@@ -186,7 +206,7 @@ class ViewController: UIViewController {
         restartChallnegeVC.challengeName = challengeName
         restartChallnegeVC.modalTransitionStyle = .crossDissolve
         restartChallnegeVC.modalPresentationStyle = .overFullScreen
-        self.present(restartChallnegeVC, animated: true, completion: nil)
+        self.present(restartChallnegeVC ?? UIViewController(), animated: true, completion: nil)
     }
     
     // 목표 설정 화면 진입 전에, 처음 추가한 목표인지 or 기존 목표 수정인지 여부를 판단하고 적용
@@ -224,7 +244,18 @@ class ViewController: UIViewController {
             targetTimeLabel.text = "목표 \(targetTime)분"
             currentReadingBookCountLabel.text = "\(readBookAmount)권 / "
             dDayLabel.text = "\(dDay)일 남음"
-
+            
+            if let challengeCompleted = challengeInfo {
+                if challengeCompleted.isCompletedChallenge() {
+                    GlobalSettings.challengeCompletionInformation.increaseCompletedCount()
+                    if GlobalSettings.challengeCompletionInformation.isValid() == true {
+                        print("LOG - 챌린지 만료시점에 목표 달성한 경우, 애니메이션 출력")
+                        let challengeCompletionVC = UIViewController().initViewControllerstoryBoardName(
+                            storyBoardName: UIViewController.mainStroyBoard, viewControllerId: "challengeCompletionVC")
+                        navigationController?.pushViewController(challengeCompletionVC, animated: false)
+                    }
+                }
+            }
         }
     }
 
