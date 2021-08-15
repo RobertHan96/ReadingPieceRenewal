@@ -30,6 +30,7 @@
 		0054BD312616385000ADFB29 /* PatchRestartChallengeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054BD302616385000ADFB29 /* PatchRestartChallengeRequest.swift */; };
 		0059F05826C6B85900F82388 /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059F05726C6B85900F82388 /* GlobalSettings.swift */; };
 		0059F05A26C6C07400F82388 /* GetUserBookReviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059F05926C6C07400F82388 /* GetUserBookReviewList.swift */; };
+		0059F05E26C8EA5400F82388 /* IBDesginable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059F05D26C8EA5400F82388 /* IBDesginable.swift */; };
 		005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */; };
 		007CF5F32603192800F530AD /* ReviewImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007CF5F22603192800F530AD /* ReviewImageView.xib */; };
 		007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007CF5F7260321E800F530AD /* ReviewImageView.swift */; };
@@ -240,6 +241,7 @@
 		0054BD302616385000ADFB29 /* PatchRestartChallengeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchRestartChallengeRequest.swift; sourceTree = "<group>"; };
 		0059F05726C6B85900F82388 /* GlobalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
 		0059F05926C6C07400F82388 /* GetUserBookReviewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserBookReviewList.swift; sourceTree = "<group>"; };
+		0059F05D26C8EA5400F82388 /* IBDesginable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesginable.swift; sourceTree = "<group>"; };
 		005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReadingPercentPopupViewController.swift; sourceTree = "<group>"; };
 		007CF5F22603192800F530AD /* ReviewImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewImageView.xib; sourceTree = "<group>"; };
 		007CF5F7260321E800F530AD /* ReviewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImageView.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 			children = (
 				0011538126BEDD07006B17AA /* DeviceManager.swift */,
 				0059F05726C6B85900F82388 /* GlobalSettings.swift */,
+				0059F05D26C8EA5400F82388 /* IBDesginable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1258,6 +1261,7 @@
 				0059F05826C6B85900F82388 /* GlobalSettings.swift in Sources */,
 				0011537B26BAF55A006B17AA /* LoginManager.swift in Sources */,
 				59F4F2F525F9B9A300E82417 /* ReviewBookInfoCell.swift in Sources */,
+				0059F05E26C8EA5400F82388 /* IBDesginable.swift in Sources */,
 				598398AE2610A743005AFB6A /* JoinResponse.swift in Sources */,
 				00C121A8260FAE2C00186F40 /* PostUserCakeTypeRequest.swift in Sources */,
 				00FF3762260A2FBF00529570 /* PatchReadingGoalRequest.swift in Sources */,
