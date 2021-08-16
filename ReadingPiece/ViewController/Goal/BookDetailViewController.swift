@@ -13,7 +13,7 @@ class BookDetailViewController: UIViewController {
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let defaults = UserDefaults.standard
     var initializer: Int?
-    var userReview: [UserBookReviewFirstDetail] = []
+    var userReview: UserBookReviewFirstDetail?
     var goal: ClientGoal?
 
     @IBOutlet weak var bookImageView: UIImageView!
@@ -74,7 +74,7 @@ class BookDetailViewController: UIViewController {
     @objc func moreReviewTapped(_ gesture: UITapGestureRecognizer) {
         let storyboard = UIStoryboard(name: "Goal", bundle: nil)
         guard let reviewListVC = storyboard.instantiateViewController(withIdentifier: "reviewListVC") as? BookReviewViewController else { return }
-        reviewListVC.userReview = self.userReview
+//        reviewListVC.userReview = self.userReview
         self.navigationController?.pushViewController(reviewListVC, animated: true)
     }
 
@@ -118,14 +118,14 @@ class BookDetailViewController: UIViewController {
                         case 1000:
                             print("LOG - 책 정보 DB추가 완료 : ID\(bookId) - \(bookData.title)" )
                             self.isVaildBook = true
-                            self.getUserRewview(isbn: isbn, bookId: bookId)
+                            self.getUserReview(isbn: isbn, bookId: bookId)
                         case 2110:
                             print("LOG - 책 정보 DB에 등록된 책, 유저 리뷰내역 조회... 책ID\(bookId) - \(bookData.title)" )
                             self.isVaildBook = true
-                            self.getUserRewview(isbn: isbn, bookId: bookId)
+                            self.getUserReview(isbn: isbn, bookId: bookId)
                         default:
                             print("LOG 책 정보 DB추가 실패 - \(userResponse.message)")
-                            self.getUserRewview(isbn: isbn, bookId: bookId)
+                            self.getUserReview(isbn: isbn, bookId: bookId)
                         }
                     case .cancel(let cancelError):
                         print(cancelError!)
@@ -142,7 +142,7 @@ class BookDetailViewController: UIViewController {
     }
 
     // 불러온 유저 리뷰 정보를 바탕으로 하단 테이블뷰 리로드
-    func getUserRewview(isbn: String, bookId: String) {
+    func getUserReview(isbn: String, bookId: String) {
         
         guard let token = keychain.get(Keys.token) else { return }
         let getReviewReq = GetUserBookReviewRequest(isbn: isbn, token: token)
@@ -152,7 +152,7 @@ class BookDetailViewController: UIViewController {
                     switch userResponse.code {
                     case 1000:
                         print("LOG - 리뷰 \(userResponse.totalReadingUser)개 조회 완료")
-                        if let userReview = userResponse.userBookReview, let totalReader = userResponse.totalReadingUser?.first?.currentRead {
+                        if let userReview = userResponse.userBookReview?.first, let totalReader = userResponse.totalReadingUser?.first?.currentRead {
                             self.setTableViewDataSource(review: userReview, totalReader: totalReader)
                         }
                     default:
@@ -267,7 +267,7 @@ class BookDetailViewController: UIViewController {
         publisherLabel.text = book?.publisher
     }
     
-    func setTableViewDataSource(review: [UserBookReviewFirstDetail], totalReader: Int) {
+    func setTableViewDataSource(review: UserBookReviewFirstDetail, totalReader: Int) {
         self.userReview = review
         self.reviewTableView.reloadData()
         self.totalReviewLabel.text = "\(totalReader)"
@@ -277,7 +277,7 @@ class BookDetailViewController: UIViewController {
 extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // 유저 리뷰가 있을때만 1개의 리뷰를 먼저 보여주고, 없을 경우 보여주지 않음
-        switch userReview.first?.contents {
+        switch userReview {
         case nil:
             return 0
         default:
@@ -290,8 +290,8 @@ extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
 
-        if let review = userReview.first {
-            // 리뷰데이터를 받아서, cell에 적용하는 함수
+        if let review = userReview {
+            // 리뷰데이터를 받아서, cell에 적용하는 함수 : 리뷰리스트용, 하나용 디테일용 함수 2개 만들기
             cell.configure(reviewData: review)
         }
 

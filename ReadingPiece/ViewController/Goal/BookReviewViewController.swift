@@ -8,7 +8,7 @@
 import UIKit
 
 class BookReviewViewController: UIViewController {
-    var userReview: [UserBookReviewFirstDetail] = []
+    var userReviews: [UserBookReviewListInfo] = []
     var expandedIndexSet : IndexSet = []
     @IBOutlet weak var reviewTableView: UITableView!
     
@@ -22,23 +22,58 @@ class BookReviewViewController: UIViewController {
         
         reviewTableView.rowHeight = UITableView.automaticDimension
         reviewTableView.estimatedRowHeight = 189.5
-        
     }
     
+    private func getUserReviews() {
+        guard let token = keychain.get(Keys.token) else { return }
+            let addBookReq = AddBookRequest(book: bookData, token: token)
+
+            _ = Network.request(req: addBookReq) { (result) in
+                    switch result {
+                    case .success(let userResponse):
+                        let isbn = bookData.publishNumber
+                        let bookId = String(userResponse.bookId)
+                        self.bookId = userResponse.bookId
+                        switch userResponse.code {
+                        case 1000:
+                            print("LOG - 책 정보 DB추가 완료 : ID\(bookId) - \(bookData.title)" )
+                            self.isVaildBook = true
+                            self.getUserReview(isbn: isbn, bookId: bookId)
+                        case 2110:
+                            print("LOG - 책 정보 DB에 등록된 책, 유저 리뷰내역 조회... 책ID\(bookId) - \(bookData.title)" )
+                            self.isVaildBook = true
+                            self.getUserReview(isbn: isbn, bookId: bookId)
+                        default:
+                            print("LOG 책 정보 DB추가 실패 - \(userResponse.message)")
+                            self.getUserReview(isbn: isbn, bookId: bookId)
+                        }
+                    case .cancel(let cancelError):
+                        print(cancelError!)
+                    case .failure(let error):
+                        print("LOG", error)
+                        self.presentAlert(title: "책 정보 로딩 실패, 다른 책을 선택해주세요.", isCancelActionIncluded: false)
+                        self.navigationController?.popViewController(animated: true)
+                }
+            }
+        } else {
+            self.presentAlert(title: "책 정보 로딩 실패, 네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
+            navigationController?.popViewController(animated: true)
+        }
+    }
 }
 
 extension BookReviewViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // 유저 리뷰가 있을때만 1개의 리뷰를 먼저 보여주고, 없을 경우 보여주지 않음
-        switch userReview.first?.contents {
-        case nil:
-            //let message = "아직 평가/리뷰가 없어요. \n꾸준히 독서하고 책에 대해 평가해보세요!"
-            //reviewTableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType: "none", actionButtonClosure: {
-            //    print("none")
-            //})
-            return 0
+        switch userReviews.count {
+        case 0:
+            let message = "아직 평가/리뷰가 없어요. \n꾸준히 독서하고 책에 대해 평가해보세요!"
+            reviewTableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType: "none", actionButtonClosure: {
+                print("LOG - 유저가 작성한 리뷰 없음")
+            })
+            return 1
         default:
-            return userReview.count
+            return userReviews.count
         }
     }
     
@@ -46,7 +81,7 @@ extension BookReviewViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = reviewTableView.dequeueReusableCell(withIdentifier: "bookReviewCell", for: indexPath) as? ReviewTableViewCell else {
             return UITableViewCell()
         }
-        cell.configure(reviewData: userReview[indexPath.row])
+        cell.configure(reviewListData: userReviews[indexPath.row])
         cell.reviewCellDelegate = self
         
         if expandedIndexSet.contains(indexPath.row) {// 더보기 버튼을 누른 셀인 경우
@@ -74,8 +109,6 @@ extension BookReviewViewController: UITableViewDelegate, UITableViewDataSource {
     func addData(){
         
     }
-    
-    
 }
 
 extension BookReviewViewController: ReviewTableViewCellDelegate {
