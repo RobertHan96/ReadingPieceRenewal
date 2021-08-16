@@ -49,6 +49,8 @@ class ReviewTableViewCell: UITableViewCell {
         likeButton.isHidden = true
         commentButton.isHidden = true
         commentLabel.isHidden = true
+        editButton.isHidden = true
+        isCompletedImage.isHidden = true
     }
     
     // 전체 리뷰리스트 표시용 레이아웃

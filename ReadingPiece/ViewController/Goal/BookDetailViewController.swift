@@ -15,6 +15,11 @@ class BookDetailViewController: UIViewController {
     var initializer: Int?
     var userReview: UserBookReviewFirstDetail?
     var goal: ClientGoal?
+    var isbn = "" {
+        didSet {
+            setTotalReviewdUser()
+        }
+    }
 
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -74,7 +79,7 @@ class BookDetailViewController: UIViewController {
     @objc func moreReviewTapped(_ gesture: UITapGestureRecognizer) {
         let storyboard = UIStoryboard(name: "Goal", bundle: nil)
         guard let reviewListVC = storyboard.instantiateViewController(withIdentifier: "reviewListVC") as? BookReviewViewController else { return }
-//        reviewListVC.userReview = self.userReview
+        reviewListVC.isbn = self.isbn
         self.navigationController?.pushViewController(reviewListVC, animated: true)
     }
 
@@ -119,10 +124,12 @@ class BookDetailViewController: UIViewController {
                             print("LOG - 책 정보 DB추가 완료 : ID\(bookId) - \(bookData.title)" )
                             self.isVaildBook = true
                             self.getUserReview(isbn: isbn, bookId: bookId)
+                            self.isbn = isbn
                         case 2110:
                             print("LOG - 책 정보 DB에 등록된 책, 유저 리뷰내역 조회... 책ID\(bookId) - \(bookData.title)" )
                             self.isVaildBook = true
                             self.getUserReview(isbn: isbn, bookId: bookId)
+                            self.isbn = isbn
                         default:
                             print("LOG 책 정보 DB추가 실패 - \(userResponse.message)")
                             self.getUserReview(isbn: isbn, bookId: bookId)
@@ -166,6 +173,16 @@ class BookDetailViewController: UIViewController {
                     self.navigationController?.popViewController(animated: true)
             }
         }
+    }
+    
+    func setTotalReviewdUser() {
+        // 총 리뷰 작성 유저수 : 별도 API로 가져오기 때문에 따로 호출
+        guard let token = keychain.get(Keys.token) else { return }
+        NetworkAPI.getTotalUserReviews(isbn: isbn, token: token, completion: { totalReviewdUser in
+            DispatchQueue.main.async {
+                self.totalReviewLabel.text = "\(totalReviewdUser)"
+            }
+        })
     }
     
     func postUserReadingGoal() {
@@ -281,7 +298,7 @@ extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
         case nil:
             return 0
         default:
-            return 1
+            return 0
         }
     }
 

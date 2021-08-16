@@ -29,6 +29,7 @@
 		0059F05E26C8EA5400F82388 /* IBDesginable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059F05D26C8EA5400F82388 /* IBDesginable.swift */; };
 		0059F06126C9482800F82388 /* StringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059F06026C9482800F82388 /* StringManager.swift */; };
 		0059F06326C9492100F82388 /* MainViewNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059F06226C9492100F82388 /* MainViewNetworkManager.swift */; };
+		0059F06526CA059D00F82388 /* GetUserBookReviewsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059F06426CA059D00F82388 /* GetUserBookReviewsRequest.swift */; };
 		005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */; };
 		007CF5F32603192800F530AD /* ReviewImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007CF5F22603192800F530AD /* ReviewImageView.xib */; };
 		007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007CF5F7260321E800F530AD /* ReviewImageView.swift */; };
@@ -242,6 +243,7 @@
 		0059F05D26C8EA5400F82388 /* IBDesginable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesginable.swift; sourceTree = "<group>"; };
 		0059F06026C9482800F82388 /* StringManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringManager.swift; sourceTree = "<group>"; };
 		0059F06226C9492100F82388 /* MainViewNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewNetworkManager.swift; sourceTree = "<group>"; };
+		0059F06426CA059D00F82388 /* GetUserBookReviewsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserBookReviewsRequest.swift; sourceTree = "<group>"; };
 		005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReadingPercentPopupViewController.swift; sourceTree = "<group>"; };
 		007CF5F22603192800F530AD /* ReviewImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewImageView.xib; sourceTree = "<group>"; };
 		007CF5F7260321E800F530AD /* ReviewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImageView.swift; sourceTree = "<group>"; };
@@ -684,6 +686,7 @@
 				59393BBE260CC70E00A2CE30 /* ReviewResponse.swift */,
 				59393BBA260CC6E500A2CE30 /* GetReviewRequest.swift */,
 				596D4DA1260ADA7400E137F3 /* DeleteReviewRequest.swift */,
+				0059F06426CA059D00F82388 /* GetUserBookReviewsRequest.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -1054,14 +1057,14 @@
 			isa = PBXGroup;
 			children = (
 				0024104426B7FF8A00946297 /* WalkThrough */,
-				0092500B2602604300A930DD /* Main */,
-				00FF3771260A576B00529570 /* Community */,
 				59A967CD26032BF1000EE89F /* Login */,
+				D67C658F25E5BE8600F15290 /* Navigation */,
+				0092500B2602604300A930DD /* Main */,
 				00838FCC25F362CD00340AE0 /* Challenge */,
 				D60B364225EE2E5A000E949D /* Library */,
+				00FF3771260A576B00529570 /* Community */,
 				D60B364025EE2E45000E949D /* My */,
 				D60B363F25EE2E3B000E949D /* Goal */,
-				D67C658F25E5BE8600F15290 /* Navigation */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1409,6 +1412,7 @@
 				D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */,
 				00C55F5726032AF1002848AB /* ReviewImageCell.swift in Sources */,
 				D6BEFD422611D8CF00866D45 /* UserStatisticsRequest.swift in Sources */,
+				0059F06526CA059D00F82388 /* GetUserBookReviewsRequest.swift in Sources */,
 				0026127C25FB2547000B40D1 /* DailyGoalCompletionViewController.swift in Sources */,
 				00FF379C260C613200529570 /* RestartChallengeViewController.swift in Sources */,
 				59F4F22F25F5C0B400E82417 /* Review.swift in Sources */,

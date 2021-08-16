@@ -6,14 +6,23 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class BookReviewViewController: UIViewController {
-    var userReviews: [UserBookReviewListInfo] = []
-    var expandedIndexSet : IndexSet = []
     @IBOutlet weak var reviewTableView: UITableView!
+
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
+    var expandedIndexSet : IndexSet = []
+    var isbn = ""
+    var userReviews: [UserBookReviewListInfo] = [] {
+        didSet {
+            reviewTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserReviews()
         reviewTableView.tableFooterView = UIView(frame: CGRect.zero)
         reviewTableView.delegate = self
         reviewTableView.dataSource = self
@@ -24,59 +33,34 @@ class BookReviewViewController: UIViewController {
         reviewTableView.estimatedRowHeight = 189.5
     }
     
+    // isbn만 들고오면 로직처리 가능
     private func getUserReviews() {
         guard let token = keychain.get(Keys.token) else { return }
-            let addBookReq = AddBookRequest(book: bookData, token: token)
-
-            _ = Network.request(req: addBookReq) { (result) in
-                    switch result {
-                    case .success(let userResponse):
-                        let isbn = bookData.publishNumber
-                        let bookId = String(userResponse.bookId)
-                        self.bookId = userResponse.bookId
-                        switch userResponse.code {
-                        case 1000:
-                            print("LOG - 책 정보 DB추가 완료 : ID\(bookId) - \(bookData.title)" )
-                            self.isVaildBook = true
-                            self.getUserReview(isbn: isbn, bookId: bookId)
-                        case 2110:
-                            print("LOG - 책 정보 DB에 등록된 책, 유저 리뷰내역 조회... 책ID\(bookId) - \(bookData.title)" )
-                            self.isVaildBook = true
-                            self.getUserReview(isbn: isbn, bookId: bookId)
-                        default:
-                            print("LOG 책 정보 DB추가 실패 - \(userResponse.message)")
-                            self.getUserReview(isbn: isbn, bookId: bookId)
-                        }
-                    case .cancel(let cancelError):
-                        print(cancelError!)
-                    case .failure(let error):
-                        print("LOG", error)
-                        self.presentAlert(title: "책 정보 로딩 실패, 다른 책을 선택해주세요.", isCancelActionIncluded: false)
-                        self.navigationController?.popViewController(animated: true)
-                }
+        let getReviewsReq = GetUserBookReviewsRequest(isbn: isbn, token: token)
+        _ = Network.request(req: getReviewsReq) { (result) in
+                switch result {
+                case .success(let userResponse):
+                    switch userResponse.code {
+                    case 1000:
+                        self.userReviews = userResponse.reviews ?? []
+                    default:
+                        self.presentAlert(title: "리뷰가 없습니다.", isCancelActionIncluded: false)
+                    }
+                case .cancel(let cancelError):
+                    print(cancelError!)
+                case .failure(let error):
+                    print("LOG", error)
+                    self.presentAlert(title: "리뷰가 없습니다.", isCancelActionIncluded: false)
             }
-        } else {
-            self.presentAlert(title: "책 정보 로딩 실패, 네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
-            navigationController?.popViewController(animated: true)
         }
     }
 }
 
 extension BookReviewViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 유저 리뷰가 있을때만 1개의 리뷰를 먼저 보여주고, 없을 경우 보여주지 않음
-        switch userReviews.count {
-        case 0:
-            let message = "아직 평가/리뷰가 없어요. \n꾸준히 독서하고 책에 대해 평가해보세요!"
-            reviewTableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType: "none", actionButtonClosure: {
-                print("LOG - 유저가 작성한 리뷰 없음")
-            })
-            return 1
-        default:
-            return userReviews.count
-        }
+        return userReviews.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = reviewTableView.dequeueReusableCell(withIdentifier: "bookReviewCell", for: indexPath) as? ReviewTableViewCell else {
             return UITableViewCell()
@@ -95,22 +79,24 @@ extension BookReviewViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let height: CGFloat = scrollView.frame.size.height
-        let contentYOffset: CGFloat = scrollView.contentOffset.y
-        let scrollViewHeight: CGFloat = scrollView.contentSize.height
-        let distanceFromBottom: CGFloat = scrollViewHeight - contentYOffset
-                  
-        if distanceFromBottom < height {
-            addData()
-        }
-    }
-    
-    func addData(){
-        
-    }
+    // 무한스크롤 관련 로직 추후 구현
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let height: CGFloat = scrollView.frame.size.height
+//        let contentYOffset: CGFloat = scrollView.contentOffset.y
+//        let scrollViewHeight: CGFloat = scrollView.contentSize.height
+//        let distanceFromBottom: CGFloat = scrollViewHeight - contentYOffset
+//
+//        if distanceFromBottom < height {
+//            addData()
+//        }
+//    }
+//
+//    func addData(){
+//
+//    }
 }
 
+// 3dot 메뉴가 사용될 경우 쓰이는 로직 코드
 extension BookReviewViewController: ReviewTableViewCellDelegate {
     func moreTextButtonTapped(cell: ReviewTableViewCell) {
         if let indexPath = reviewTableView.indexPath(for: cell) {
