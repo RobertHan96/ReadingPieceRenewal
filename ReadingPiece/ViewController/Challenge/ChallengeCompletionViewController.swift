@@ -32,10 +32,10 @@ class ChallengeCompletionViewController: UIViewController {
 
     @IBAction func continueReading(_ sender: UIButton) {
         // 챌린지 달성 이후, [계속하기] 버튼 선택시 메인 화면으로 rootViewController 변경
-        // postNewUserCakeType에 컴플리션 핸들러 달고, 완료시 팝업창 닫기
-        postNewUserCakeType()
-        let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
-        UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)
+        postNewUserCakeType(completio: {
+            let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
+            UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)
+        })
     }
     
     @IBAction func closeModal(_ sender: UIButton) {
@@ -52,11 +52,11 @@ class ChallengeCompletionViewController: UIViewController {
         challengeCakeNameLabel.textColor = .darkgrey
         GlobalSettings.challengeCompletionInformation.increaseAnimationShownCount()
     }
-    
-    func postNewUserCakeType() {
+
+    func postNewUserCakeType(completio: @escaping () -> Void) {
         guard let token = keychain.get(Keys.token) else { return }
         let goalId = UserDefaults().integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
-        let cakeName = UserDefaults().string(forKey: Constants.USERDEFAULT_KEY_CURRENT_CAKE_NAME) ?? "berry"
+        let cakeName = UserDefaults().string(forKey: Constants.USERDEFAULT_KEY_CURRENT_CAKE_NAME)?.getNewCakeName ?? "cream"
         let req = PostUserCakeTypeRequest(token: token, goalId: goalId, cake: cakeName)
         
         _ = Network.request(req: req) { (result) in
@@ -74,15 +74,6 @@ class ChallengeCompletionViewController: UIViewController {
                     debugPrint("LOG", error)
             }
         }
-    }
-    
-    // 이전 케이크 이름을 받아서, 새로 할당할 케이크 이름을 반환하는 함수
-    // cream->choco->bery
-    func getNewCakeName(cake: String) -> String {
-        var result = "choco"
-        
-        
-        return result
     }
     
     func setFireCracker() {

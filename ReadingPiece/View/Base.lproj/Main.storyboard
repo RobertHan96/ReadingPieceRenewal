@@ -1265,7 +1265,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQx-yy-Mwx">
-                                                        <rect key="frame" x="317" y="1" width="12" height="22"/>
+                                                        <rect key="frame" x="310" y="1" width="19" height="22"/>
                                                         <state key="normal" image="addPictureIcon"/>
                                                         <connections>
                                                             <action selector="addImage:" destination="snK-Qc-9UX" eventType="touchUpInside" id="qB3-zd-Heb"/>
@@ -1591,7 +1591,7 @@
     </scenes>
     <resources>
         <image name="XButton" width="15.5" height="15"/>
-        <image name="addPictureIcon" width="12" height="12"/>
+        <image name="addPictureIcon" width="19" height="19"/>
         <image name="challenge" width="25" height="25"/>
         <image name="challengeCake" width="191.5" height="127.5"/>
         <image name="clearGlyphSearchBar" width="16" height="16"/>

@@ -55,7 +55,15 @@ struct ChallengerInfo {
     var readingGoal : [ReadingGoal]
     var todayChallenge : Challenge
     var isExpired: Bool
-    
+
+    func isExpiredChallenge() -> Bool {
+        if isExpired == true && readingGoal.first?.percent ?? 99 != 100 {
+            return true
+        } else {
+            return false
+        }
+    }
+
     func isCompletedChallenge() -> Bool {
         if isExpired == true && readingGoal.first?.percent == 100 {
             return true

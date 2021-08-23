@@ -189,7 +189,7 @@ class ViewController: UIViewController {
                 let isChallengeIsCompleted =  challengeData?.readingBook.first?.isComplete
 
                 // 챌린지 정보 조회 결과, 참여 기간이 만료된 경우 + 미션 성공 실패
-                if self.challengeInfo?.isExpired == true {
+                if self.challengeInfo?.isExpiredChallenge() == true {
                     self.showRestartChallengePopup()
                     // 참여기간내 미션 성공
                 } else {
