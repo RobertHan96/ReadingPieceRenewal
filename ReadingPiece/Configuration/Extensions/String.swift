@@ -9,6 +9,15 @@ import Foundation
 
 extension String {
     
+    var getNewCakeName: String {
+        switch self {
+        case "cream":
+            return "choco"
+        default:
+            return "berry"
+        }
+    }
+    
     // 유효성검사 타입
     enum ValidityType {
         case email

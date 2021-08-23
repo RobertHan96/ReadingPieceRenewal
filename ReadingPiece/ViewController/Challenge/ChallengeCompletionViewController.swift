@@ -78,8 +78,11 @@ class ChallengeCompletionViewController: UIViewController {
     
     // 이전 케이크 이름을 받아서, 새로 할당할 케이크 이름을 반환하는 함수
     // cream->choco->bery
-    func getNewCakeName() {
+    func getNewCakeName(cake: String) -> String {
+        var result = "choco"
         
+        
+        return result
     }
     
     func setFireCracker() {

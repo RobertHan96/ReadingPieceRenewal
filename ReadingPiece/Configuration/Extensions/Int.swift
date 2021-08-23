@@ -8,6 +8,25 @@
 import Foundation
 
 extension Int {
+    
+    var getCakeImageNameByPercent: Int {
+        
+        if self == 0 {
+            return 0
+        } else if  self > 0 && self < 20 {
+            return 1
+        } else if  self >= 20 && self < 40 {
+            return 2
+        } else if  self >= 40 && self < 60 {
+            return 3
+        } else if  self >= 60 && self < 80 {
+            return 4
+        } else if  self >= 80{
+            return 5
+        }
+        return 0
+    }
+    
     static func getMinutesTextByTime(_ time: Int) -> String {
         var text = ""
         if time > 60 {
