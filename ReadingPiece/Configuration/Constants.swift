@@ -13,6 +13,7 @@ struct Constants {
     static let DEV_BASE_URL = "https://prod.maekuswant.shop/"
     static let BASE_URL = "https://prod.maekuswant.shop/"
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
+    static let USERDEFAULT_KEY_CURRENT_CAKE_NAME = "berry"
     static let USERDEFAULT_KEY_CURRENT_TIMER_TIME = "savedTimeInt"
     static let USERDEFAULT_KEY_GOAL_ID = "goalId"
     static let USERDEFAULT_KEY_GOAL_BOOK_ID = "goalBookId"

@@ -39,6 +39,7 @@ public struct ReadingGoal: Codable {
 
 // 진행 중인 챌린지 정보 : API의 getchallenge3Rows Response에 해당되는 부분
 public struct Challenge: Codable {
+    public let cake: String
     public let totalJournal: Int? // 해당 챌린지동안 작성한 일지 개수
     public let todayTime: String? // 오늘 독서 시간
     public let amount: Int? // 챌린지 단위 기간당 목표 책 권수
@@ -52,6 +53,7 @@ public struct Challenge: Codable {
     public let challengeId: Int?
     
     enum CodingKeys: String, CodingKey {
+        case cake
         case totalJournal = "sumJournal"
         case todayTime
         case amount

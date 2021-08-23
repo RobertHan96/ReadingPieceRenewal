@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     let stringManager = StringManager()
     var challengeInfo : ChallengerInfo? { didSet {
         radingBooksCollectionView.reloadData()
+        getChallengeImageFileName()
     }}
     var goalInitializer = 0
 
@@ -134,14 +135,24 @@ class ViewController: UIViewController {
         targetTimeLabel.addGestureRecognizer(modifiyTargetTimeGesture)
     }
     
-    func makeDaillyReadingViewShadow() {
+    private func getChallengeImageFileName() {
+        guard let percent = challengeInfo?.readingGoal.first?.percent else { return }
+        let cakePerecent = Int.getCakeImageNameByPercent(percent: percent)
+        guard  let cakeName = challengeInfo?.todayChallenge.cake else { return }
+        
+        DispatchQueue.main.async {
+            self.challengeImageView.image = UIImage(named: "\(cakeName)\(cakePerecent)Cake")
+        }
+    }
+    
+    private func makeDaillyReadingViewShadow() {
         dailyReadingView.layer.shadowRadius = 5
         dailyReadingView.layer.shadowColor = UIColor.black.cgColor
         dailyReadingView.layer.shadowOpacity = 0.2
         dailyReadingView.layer.shadowOffset = CGSize(width: 0, height: 0)
     }
     
-    func setupCollectionView() {
+    private func setupCollectionView() {
         radingBooksCollectionView.delegate = self
         radingBooksCollectionView.dataSource = self
         self.radingBooksCollectionView.register(UINib.init(nibName: cellId, bundle: nil), forCellWithReuseIdentifier: cellId)
@@ -151,7 +162,7 @@ class ViewController: UIViewController {
         radingBooksCollectionView.layer.borderColor = UIColor.middlegrey2.cgColor
     }
     
-    func setupFlowLayout() {
+    private func setupFlowLayout() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.itemSize = CGSize(width: self.radingBooksCollectionView.layer.bounds.width
@@ -161,7 +172,7 @@ class ViewController: UIViewController {
         radingBooksCollectionView.collectionViewLayout = flowLayout
     }
     
-    func initMainView() {
+    private func initMainView() {
         getChallengeRequest(currentView: self) { (challengeData) in
             print("LOG - 유저 정보 개요", challengeData as Any)
             switch challengeData {
@@ -188,7 +199,7 @@ class ViewController: UIViewController {
         }
     }
 
-    func showRestartChallengePopup() {
+    private func showRestartChallengePopup() {
         guard let restartChallnegeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "restartChallengeVC") as?
             RestartChallengeViewController else { return }
         let challenge = challengeInfo?.todayChallenge
@@ -205,7 +216,7 @@ class ViewController: UIViewController {
     
     // 목표 설정 화면 진입 전에, 처음 추가한 목표인지 or 기존 목표 수정인지 여부를 판단하고 적용
     // 데이터 파싱 완료 이후, 유저에게 보여줄 데이터를 VC에 적용
-    func initVC(isCompletedChallenge: Int?) {
+    private func initVC(isCompletedChallenge: Int?) {
         if let challenge = self.challengeInfo?.todayChallenge, let goal = self.challengeInfo?.readingGoal.first, let challengingBook = challengeInfo?.readingBook.first {
             // 다른 VC에서 재사용을 위해 UserDefaults에 저장하는 값들
             let goalBookId = challengingBook.goalBookId

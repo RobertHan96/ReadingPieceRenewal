@@ -97,6 +97,7 @@ struct MainViewNetworkManager {
     }
 
     func getChallengeFromJson(json: JSON) -> Challenge {
+        let cake = json["cake"].stringValue
         let totalJournal = json["sumJournal"].intValue
         let todayReadingTime = json["todayTime"].string
         let amount = json["amount"].intValue
@@ -109,7 +110,7 @@ struct MainViewNetworkManager {
         let dDay = json["Dday"].intValue
         let challengeId = json["challengeId"].intValue
 
-        let challenge = Challenge(totalJournal: totalJournal, todayTime: todayReadingTime, amount: amount, time: time, period: period, userId: userId,
+        let challenge = Challenge(cake: cake, totalJournal: totalJournal, todayTime: todayReadingTime, amount: amount, time: time, period: period, userId: userId,
                                   totalReadBook: totalReadingBook, name: name, expriodAt: expriodAt, dDay: dDay, challengeId: challengeId)
 
         return challenge

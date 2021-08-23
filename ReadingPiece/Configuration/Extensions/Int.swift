@@ -17,4 +17,22 @@ extension Int {
         }
         return text
     }
+    
+    static func getCakeImageNameByPercent(percent: Int) -> Int {
+        var result = 0
+        
+        if percent > 0 && percent < 20 {
+            result = 1
+        } else if percent >= 20  && percent < 40 {
+            result = 2
+        } else if percent >= 40 && percent < 60 {
+            result = 3
+        } else if percent >= 60 && percent < 80 {
+            result = 4
+        } else if percent >= 80 {
+            result = 5
+        }
+        return result
+    }
+    
 }
