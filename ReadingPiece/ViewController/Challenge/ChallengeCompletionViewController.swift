@@ -24,7 +24,24 @@ class ChallengeCompletionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+    
+    @objc func shareDaillyReadingResult(sender: UIBarButtonItem) {
+        shareResult()
+    }
+
+    @IBAction func continueReading(_ sender: UIButton) {
+        // 챌린지 달성 이후, [계속하기] 버튼 선택시 메인 화면으로 rootViewController 변경
+        // postNewUserCakeType에 컴플리션 핸들러 달고, 완료시 팝업창 닫기
         postNewUserCakeType()
+        let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
+        UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func closeModal(_ sender: UIButton) {
+        // 계속하기화 마찬가지로 [X] 버튼 선택했을 때도 메인 화면으로 rootViewController 변경
+        let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
+        UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)
     }
     
     private func setupUI() {
@@ -38,8 +55,9 @@ class ChallengeCompletionViewController: UIViewController {
     
     func postNewUserCakeType() {
         guard let token = keychain.get(Keys.token) else { return }
-        // 유저디폴트에 있는 goalId, 케이크 이름을 받아오도록 추후 변경 필요
-        let req = PostUserCakeTypeRequest(token: token, goalId: 33, cake: "bery")
+        let goalId = UserDefaults().integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
+        let cakeName = UserDefaults().string(forKey: Constants.USERDEFAULT_KEY_CURRENT_CAKE_NAME) ?? "berry"
+        let req = PostUserCakeTypeRequest(token: token, goalId: goalId, cake: cakeName)
         
         _ = Network.request(req: req) { (result) in
                 switch result {
@@ -58,6 +76,12 @@ class ChallengeCompletionViewController: UIViewController {
         }
     }
     
+    // 이전 케이크 이름을 받아서, 새로 할당할 케이크 이름을 반환하는 함수
+    // cream->choco->bery
+    func getNewCakeName() {
+        
+    }
+    
     func setFireCracker() {
         self.fireCrackerView.backgroundColor = .clear
         let scene = FireCrackerScene()
@@ -69,22 +93,6 @@ class ChallengeCompletionViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationItem.rightBarButtonItem?.tintColor = .darkgrey
         self.navigationController?.navigationBar.tintColor = .darkgrey
-    }
-    
-    @objc func shareDaillyReadingResult(sender: UIBarButtonItem) {
-        shareResult()
-    }
-
-    @IBAction func continueReading(_ sender: UIButton) {
-        // 챌린지 달성 이후, [계속하기] 버튼 선택시 메인 화면으로 rootViewController 변경
-        let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
-        UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)
-    }
-    
-    @IBAction func closeModal(_ sender: UIButton) {
-        // 계속하기화 마찬가지로 [X] 버튼 선택했을 때도 메인 화면으로 rootViewController 변경
-        let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
-        UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)
     }
     
     func shareResult() {

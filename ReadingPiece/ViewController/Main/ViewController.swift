@@ -139,7 +139,8 @@ class ViewController: UIViewController {
         guard let percent = challengeInfo?.readingGoal.first?.percent else { return }
         let cakePerecent = Int.getCakeImageNameByPercent(percent: percent)
         guard  let cakeName = challengeInfo?.todayChallenge.cake else { return }
-        
+        defaults.setValue(cakeName, forKey: Constants.USERDEFAULT_KEY_CURRENT_CAKE_NAME)
+
         DispatchQueue.main.async {
             self.challengeImageView.image = UIImage(named: "\(cakeName)\(cakePerecent)Cake")
         }
