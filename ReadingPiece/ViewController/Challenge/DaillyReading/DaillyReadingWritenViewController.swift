@@ -130,8 +130,6 @@ class DaillyReadingWritenViewController: UIViewController {
                         print("LOG 일지 작성 실패 \(userResponse.code)", journal, journal.goalBookId)
                         self.presentAlert(title: "일지 작성에 실패하였습니다. 입력 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
                         
-                    // 버튼 작성 잠금 해제
-                    UIApplication.shared.endIgnoringInteractionEvents()
                     }
                 case .cancel(let cancelError):
                     print(cancelError!)
@@ -140,6 +138,8 @@ class DaillyReadingWritenViewController: UIViewController {
                     self.presentAlert(title: "네트워크 연결 실패 통신 상태를 확인해주세요.", isCancelActionIncluded: false)
             }
         }
+        // 버튼 작성 잠금 해제
+        UIApplication.shared.endIgnoringInteractionEvents()
     }
     // 일지 작성에 필요한 값이 스트링형태라 Bool -> String으로 변환
     func getIsOpenFromIsJson(isPublic: Bool) -> String {

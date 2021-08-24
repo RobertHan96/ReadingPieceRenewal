@@ -9,6 +9,26 @@ import Foundation
 import Alamofire
 
 class NetworkAPI {
+    
+    static func getTotalUserReviews(isbn: String, token: String, completion: @escaping (Int) -> Void ){
+        let getReviewsReq = GetUserBookReviewsRequest(isbn: isbn, token: token)
+        _ = Network.request(req: getReviewsReq) { (result) in
+                switch result {
+                case .success(let userResponse):
+                    switch userResponse.code {
+                    case 1000:
+                        completion(userResponse.reviews?.count ?? 0)
+                    default:
+                        print("LOG - 총 리뷰 작성한 유저수 로딩 실패", userResponse.code, isbn, token)
+                    }
+                case .cancel(let cancelError):
+                    print(cancelError!)
+                case .failure(let error):
+                    print("LOG", error)
+            }
+        }
+    }
+    
     static func search(query: String, page: Int, completion: @escaping ([Book],Int,Bool) -> Void) {
         let APIKey = "7e7729343ca056b32e80622098e52b27"
 

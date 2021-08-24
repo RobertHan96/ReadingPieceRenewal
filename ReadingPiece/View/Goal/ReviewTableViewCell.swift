@@ -49,13 +49,28 @@ class ReviewTableViewCell: UITableViewCell {
         likeButton.isHidden = true
         commentButton.isHidden = true
         commentLabel.isHidden = true
+        editButton.isHidden = true
+        isCompletedImage.isHidden = true
     }
     
+    // 전체 리뷰리스트 표시용 레이아웃
+    func configure(reviewListData: UserBookReviewListInfo) {
+        nameLabel.text = reviewListData.name
+        dateLabel.text = reviewListData.postAt
+        reviewLabel.text = reviewListData.text
+        guard let stringUrl = reviewListData.profilePictureURL else { return}
+        let imgUrl = URL(string: stringUrl)
+        guard let star = reviewListData.star else { return }
+        bookImageView.kf.setImage(with: imgUrl)
+        drawStars(rating: star)
+    }
+    
+    // 책 정보 하단에 보여지는 리뷰 1개 상세 레이아웃
     func configure(reviewData: UserBookReviewFirstDetail) {
         nameLabel.text = reviewData.name
         dateLabel.text = reviewData.postAt
         reviewLabel.text = reviewData.text
-        guard let stringUrl = reviewData.imageURL else { return}
+        guard let stringUrl = reviewData.profilePictureURL else { return}
         let imgUrl = URL(string: stringUrl)
         guard let star = reviewData.star else { return }
         bookImageView.kf.setImage(with: imgUrl)

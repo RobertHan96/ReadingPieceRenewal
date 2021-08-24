@@ -8,15 +8,17 @@
 import UIKit
 import KeychainSwift
 
-// 설정한 목표가 만료되어 재설정이 필요할 때 나오는 VC
-// : 챌린지를 조기 달성한 경우, 챌린지 기간이 만료된 경우
-protocol ViewChangeDelegate: class {
-    func dismissViewController(_ controller: UIViewController)
+// 팝업내 각 버튼 클릭시, 메인뷰에서 수행할 동작을 정의한 protocol
+protocol RestartChallengePopupButtonsActionDelegate {
+    func reTryChallengeButtonClicked()
+    func closeButtonClicked()
+    func reStartButtonClicked()
 }
 
+// 설정한 목표가 만료되어 재설정이 필요할 때 나오는 VC
 class RestartChallengeViewController: UIViewController {
     var challengeName: String?
-    var delegate: ViewChangeDelegate?
+    var buttonsDelegate: RestartChallengePopupButtonsActionDelegate?
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
 
     @IBOutlet weak var popupView: UIView!
@@ -54,11 +56,13 @@ class RestartChallengeViewController: UIViewController {
     }
     
     @IBAction func closePopupAction(_ sender: Any) {
+        buttonsDelegate?.closeButtonClicked()
         self.dismiss(animated: true, completion: nil)
     }
     
     // 챌린지 재연장 API 호출
     @IBAction func retryChallengeAction(_ sender: UIButton) {
+        buttonsDelegate?.reTryChallengeButtonClicked()
         reTryChallenge()
     }
     
@@ -68,7 +72,7 @@ class RestartChallengeViewController: UIViewController {
 
         guard let pvc = self.presentingViewController else { return }
         self.dismiss(animated: true) {
-            self.delegate?.dismissViewController(self)
+            self.buttonsDelegate?.reStartButtonClicked()
         }
     }
     
@@ -84,8 +88,6 @@ class RestartChallengeViewController: UIViewController {
                     case 1000:
                         print("LOG - 챌린지 재시작 성공")
                         self.dismiss(animated: true, completion: nil)
-                        let vc = ViewController()
-                        vc.isExpiredChallenge = false
                     case 2263:
                         self.presentAlert(title: "아직 진행 중인 목표가 있습니다! 다시 확인해주세요.", isCancelActionIncluded: false)
                     default:

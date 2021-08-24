@@ -11,6 +11,7 @@ class TermViewController: UIViewController {
     var period: String?
     var amount: Int?
     var initializer: Int = 0 // 0이면 신규유저, 1이면 기존유저
+    var isValidChallenge: Bool = true // 0이면 아직안 끝난 챌린지, 1이면 끝나서 목표 재설정이 필요한 챌린지
     
     @IBOutlet weak var bookQuantityTextField: UITextField!
     @IBOutlet weak var weekButton: UIButton!
@@ -21,31 +22,6 @@ class TermViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-    }
-    
-    func setupUI() {
-        createToolbar()
-        initButtonTag()
-        self.navigationController?.navigationBar.tintColor = .darkgrey
-    }
-    
-    func createToolbar() {
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        toolbar.barTintColor = UIColor.lightgrey1
-        
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-        doneButton.tintColor = .melon
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbar.setItems([flexibleSpace, doneButton], animated: true)
-        
-        bookQuantityTextField.inputAccessoryView = toolbar
-    }
-    
-    func initButtonTag() {
-        weekButton.tag = 1
-        monthButton.tag = 2
-        yearButton.tag = 3
     }
     
     @objc func donePressed() {
@@ -75,14 +51,39 @@ class TermViewController: UIViewController {
                 if initializer == 1 {
                     // 시간 보내기 전에 여기서 신규, 기존 유저여부 판단 후 다음 화면으로 보내야함
                     // 1이면 기존 유저이므로 false, 아니면 true 할당
-                    timeVC.goal = ClientGoal(period: period, amount: amount, time: nil, isNewUser: false)
+                    timeVC.goal = ClientGoal(period: period, amount: amount, isNewUser: false, isValideChallenge: isValidChallenge)
                 } else {
-                    timeVC.goal = ClientGoal(period: period, amount: amount, time: nil, isNewUser: true)
+                    timeVC.goal = ClientGoal(period: period, amount: amount, isNewUser: true, isValideChallenge: isValidChallenge)
                 }
                 timeVC.initTerm(readingPeriod: readingPeriod, readingAmount: readingAmount) // 다음 VC에서 쓰일 목표관련 시간, 기간 정보 초기화
                 self.navigationController?.pushViewController(timeVC, animated: true)
             }
         }
+    }
+    
+    func setupUI() {
+        createToolbar()
+        initButtonTag()
+        self.navigationController?.navigationBar.tintColor = .darkgrey
+    }
+    
+    func createToolbar() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        toolbar.barTintColor = UIColor.lightgrey1
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        doneButton.tintColor = .melon
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([flexibleSpace, doneButton], animated: true)
+        
+        bookQuantityTextField.inputAccessoryView = toolbar
+    }
+    
+    func initButtonTag() {
+        weekButton.tag = 1
+        monthButton.tag = 2
+        yearButton.tag = 3
     }
     
     func setReadingTermByBtnClicked(tag: Int) {
