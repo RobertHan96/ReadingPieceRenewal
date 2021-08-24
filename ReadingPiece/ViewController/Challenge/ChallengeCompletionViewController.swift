@@ -26,23 +26,30 @@ class ChallengeCompletionViewController: UIViewController {
         setupUI()
     }
     
-    @objc func shareChallengeResult(sender: UIBarButtonItem) {
-        shareResult()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        postNewUserCakeType {
+            print("LOG - 새로운 챌린지 케이크 할당 성공")
+        }
+    }
+    
+    @IBAction func continuReadingAction(_ sender: Any) {
+        popRootViewController()
     }
 
     @objc func closeChallengeResult(sender: UIBarButtonItem) {
+        popRootViewController()
+    }
+
+    @objc func shareChallengeResult(sender: UIBarButtonItem) {
+        shareResult()
+    }
+    
+    private func popRootViewController() {
         let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
         UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)
     }
 
-    @IBAction func continuReadingAction(_ sender: Any) {
-    // 챌린지 달성 이후, [계속하기] 버튼 선택시 메인 화면으로 rootViewController 변경
-        postNewUserCakeType(completio: {
-            let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
-            UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)
-        })
-    }
-    
     private func setupUI() {
         setNavBar()
         setFireCracker()

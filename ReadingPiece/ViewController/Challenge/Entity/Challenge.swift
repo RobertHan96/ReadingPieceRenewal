@@ -129,7 +129,7 @@ struct ChallengerInfo {
     }
 
     func isCompletedChallenge() -> Bool {
-        if isExpired == true && readingGoal.first?.percent == 100 && UserDefaults().bool(forKey: Constants.IS_SHOWN_CHALLENGE_COMPLETION_EFFECT) == false {
+        if readingGoal.first?.percent == 100 && UserDefaults().bool(forKey: Constants.IS_SHOWN_CHALLENGE_COMPLETION_EFFECT) == false {
             return true
         } else {
             return false
