@@ -189,7 +189,12 @@ class ViewController: UIViewController {
 
                 // 챌린지 정보 조회 결과, 참여 기간이 만료된 경우 + 미션 성공 실패
                 if self.challengeInfo?.isExpiredChallenge() == true {
-                    self.showRestartChallengePopup()
+//                    self.showRestartChallengePopup()
+                    guard let challengeCompletionVC = UIViewController().initViewControllerstoryBoardName(
+                            storyBoardName: UIViewController.mainStroyBoard, viewControllerId: "challengeCompletionVC") as? ChallengeCompletionViewController else{ return }
+                    challengeCompletionVC.challengeInfo = self.challengeInfo
+                    self.navigationController?.pushViewController(challengeCompletionVC, animated: false)
+
                     // 참여기간내 미션 성공
                 } else {
                     self.initVC(isCompletedChallenge: isChallengeIsCompleted)
