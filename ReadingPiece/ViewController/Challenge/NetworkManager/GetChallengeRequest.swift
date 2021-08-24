@@ -46,29 +46,3 @@ final class GetChallengeRequest: Requestable {
         return .reloadIgnoringLocalAndRemoteCacheData
     }
 }
-
-
-
-// CH2 API에서 받아온 정보들을 모두 합쳐서 반환한 객체
-struct ChallengerInfo {
-    var readingBook : [ReadingBook]
-    var readingGoal : [ReadingGoal]
-    var todayChallenge : Challenge
-    var isExpired: Bool
-
-    func isExpiredChallenge() -> Bool {
-        if isExpired == true && readingGoal.first?.percent ?? 99 != 100 {
-            return true
-        } else {
-            return false
-        }
-    }
-
-    func isCompletedChallenge() -> Bool {
-        if isExpired == true && readingGoal.first?.percent == 100 {
-            return true
-        } else {
-            return false
-        }
-    }
-}

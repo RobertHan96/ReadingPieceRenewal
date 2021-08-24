@@ -12,13 +12,13 @@ import SpriteKit
 class ChallengeCompletionViewController: UIViewController {
     
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
+    var challengeInfo : ChallengerInfo?
 
     @IBOutlet weak var challengeRewardView: UIView!
     @IBOutlet weak var challengeRewardImage: UIImageView!
     @IBOutlet weak var challengeNameLabel: UILabel!
     @IBOutlet weak var challengeCakeNameLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
-    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var fireCrackerView: SKView!
 
     override func viewDidLoad() {
@@ -26,22 +26,21 @@ class ChallengeCompletionViewController: UIViewController {
         setupUI()
     }
     
-    @objc func shareDaillyReadingResult(sender: UIBarButtonItem) {
+    @objc func shareChallengeResult(sender: UIBarButtonItem) {
         shareResult()
     }
 
-    @IBAction func continueReading(_ sender: UIButton) {
-        // 챌린지 달성 이후, [계속하기] 버튼 선택시 메인 화면으로 rootViewController 변경
+    @objc func closeChallengeResult(sender: UIBarButtonItem) {
+        let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
+        UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)
+    }
+
+    @IBAction func continuReadingAction(_ sender: Any) {
+    // 챌린지 달성 이후, [계속하기] 버튼 선택시 메인 화면으로 rootViewController 변경
         postNewUserCakeType(completio: {
             let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
             UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)
         })
-    }
-    
-    @IBAction func closeModal(_ sender: UIButton) {
-        // 계속하기화 마찬가지로 [X] 버튼 선택했을 때도 메인 화면으로 rootViewController 변경
-        let vc = UIViewController().initViewControllerstoryBoardName(storyBoardName: UIViewController.mainStroyBoard, viewControllerId: UIViewController.mainViewControllerId)
-        UIApplication.shared.keyWindow?.replaceRootViewController(vc, animated: true, completion: nil)
     }
     
     private func setupUI() {
@@ -50,10 +49,14 @@ class ChallengeCompletionViewController: UIViewController {
         continueButton.makeRoundedButtnon("계속하기", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
         challengeNameLabel.textColor = .main
         challengeCakeNameLabel.textColor = .darkgrey
-        GlobalSettings.challengeCompletionInformation.increaseAnimationShownCount()
+        let cakeName = UserDefaults().string(forKey: Constants.USERDEFAULT_KEY_CURRENT_CAKE_NAME) ?? "cream"
+        challengeRewardImage.image = UIImage(named: "\(cakeName)5Cake")
+        challengeCakeNameLabel.attributedText = StringManager().attributedText(withString: "해내셨군요! 홀케이크를 완성했어요.\n다음 챌린지를 통해 독서 습관을 이어나가요! ", boldString: "홀케이크", font: challengeCakeNameLabel.font)
+        challengeNameLabel.text = challengeInfo?.getChallneMissionText()
+        UserDefaults().setValue(true, forKey: Constants.IS_SHOWN_CHALLENGE_COMPLETION_EFFECT)
     }
 
-    func postNewUserCakeType(completio: @escaping () -> Void) {
+    private func postNewUserCakeType(completio: @escaping () -> Void) {
         guard let token = keychain.get(Keys.token) else { return }
         let goalId = UserDefaults().integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
         let cakeName = UserDefaults().string(forKey: Constants.USERDEFAULT_KEY_CURRENT_CAKE_NAME)?.getNewCakeName ?? "cream"
@@ -77,19 +80,27 @@ class ChallengeCompletionViewController: UIViewController {
     }
     
     func setFireCracker() {
-        self.fireCrackerView.backgroundColor = .clear
+        fireCrackerView.backgroundColor = .clear
+        fireCrackerView.ignoresSiblingOrder = true
         let scene = FireCrackerScene()
-        self.fireCrackerView.presentScene(scene)
+        fireCrackerView.presentScene(scene)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.1) {
+            self.fireCrackerView.removeFromSuperview()
+        }
     }
     
     private func setNavBar() {
-        let rightButton = UIBarButtonItem(image: UIImage(named: "shareIconLine"), style: .plain, target: self, action: #selector(shareDaillyReadingResult(sender:)))
+        let rightButton = UIBarButtonItem(image: UIImage(named: "shareIconLine"), style: .plain, target: self, action: #selector(shareChallengeResult(sender:)))
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationItem.rightBarButtonItem?.tintColor = .darkgrey
         self.navigationController?.navigationBar.tintColor = .darkgrey
+        
+        let leftButton = UIBarButtonItem(image: UIImage(named: "XButton"), style: .plain, target: self, action: #selector(closeChallengeResult(sender:)))
+        self.navigationItem.leftBarButtonItem = leftButton
+        self.navigationItem.leftBarButtonItem?.tintColor = .darkgrey
     }
     
-    func shareResult() {
+    private func shareResult() {
         let image = challengeRewardView.captureScreenToImage()
         let imageToShare = [ image ]
         let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
@@ -98,9 +109,7 @@ class ChallengeCompletionViewController: UIViewController {
 
         self.present(activityViewController, animated: true, completion: nil)
     }
-        
 }
-
 
 extension UIView {    
     func captureScreenToImage() -> UIImage? {

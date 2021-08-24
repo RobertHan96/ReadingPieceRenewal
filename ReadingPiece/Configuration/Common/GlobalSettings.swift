@@ -5,6 +5,7 @@
 //  Created by HanaHan on 2021/08/13.
 //
 
+// 미사용 클래스
 import Foundation
 
 @propertyWrapper

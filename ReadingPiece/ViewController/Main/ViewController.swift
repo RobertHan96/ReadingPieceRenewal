@@ -72,7 +72,6 @@ class ViewController: UIViewController {
         }
     }
 
-
     @IBAction func startReadingAction(_ sender: UIButton) {
         if challengeInfo?.isExpired == true {
             showRestartChallengePopup()
@@ -211,7 +210,7 @@ class ViewController: UIViewController {
         restartChallnegeVC.challengeName = challengeName
         restartChallnegeVC.modalTransitionStyle = .crossDissolve
         restartChallnegeVC.modalPresentationStyle = .overFullScreen
-        self.present(restartChallnegeVC ?? UIViewController(), animated: true, completion: nil)
+        self.present(restartChallnegeVC , animated: true, completion: nil)
     }
     
     // 목표 설정 화면 진입 전에, 처음 추가한 목표인지 or 기존 목표 수정인지 여부를 판단하고 적용
@@ -241,7 +240,8 @@ class ViewController: UIViewController {
             let percent = goal.percent ?? 0 // 챌린지 달성도
             let cgFloatPercent = CGFloat(percent) * 0.01
             print("LOG - 일지 작성 개수",challenge.totalJournal as Any, challenge.amount as Any)
-            userReadingGoalLabel.text = "\(stringManager.getUserNameByLength(userName))님은 \(formattedPeriod)동안\n\(targetBookAmount)권 읽기에 도전 중"
+            
+            userReadingGoalLabel.text = challengeInfo?.getChallengeStatusText(name: userName, time: formattedPeriod, bookAmount: readBookAmount)
             goalStatusBarWidth.constant = statusBar.frame.width * cgFloatPercent
             daillyReadingTimeLabel.text = stringManager.minutesToHoursAndMinutes(todayTime)
             daillyReadingDiaryCountLabel.text = "\(totalReadingDiary)개"
@@ -252,13 +252,10 @@ class ViewController: UIViewController {
             
             if let challengeCompleted = challengeInfo {
                 if challengeCompleted.isCompletedChallenge() {
-                    GlobalSettings.challengeCompletionInformation.increaseCompletedCount()
-                    if GlobalSettings.challengeCompletionInformation.isValid() == true {
-                        print("LOG - 챌린지 만료시점에 목표 달성한 경우, 애니메이션 출력")
-                        let challengeCompletionVC = UIViewController().initViewControllerstoryBoardName(
-                            storyBoardName: UIViewController.mainStroyBoard, viewControllerId: "challengeCompletionVC")
-                        navigationController?.pushViewController(challengeCompletionVC, animated: false)
-                    }
+                    guard let challengeCompletionVC = UIViewController().initViewControllerstoryBoardName(
+                            storyBoardName: UIViewController.mainStroyBoard, viewControllerId: "challengeCompletionVC") as? ChallengeCompletionViewController else{ return }
+                    challengeCompletionVC.challengeInfo = challengeInfo
+                    navigationController?.pushViewController(challengeCompletionVC, animated: false)
                 }
             }
         }
@@ -284,6 +281,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 // 챌린지 재시작 팝업에서 선택한 버튼에 따른 동작을 처리하는 protocol
 extension ViewController: RestartChallengePopupButtonsActionDelegate {
     func reTryChallengeButtonClicked() {
+        // 다음번 챌린지 완료시 축하 애니메이션을 보여주기 위해 userDefault값 초기화
+        UserDefaults().setValue(false, forKey: Constants.IS_SHOWN_CHALLENGE_COMPLETION_EFFECT)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.initMainView()
         }
@@ -296,6 +295,8 @@ extension ViewController: RestartChallengePopupButtonsActionDelegate {
     }
     
     func reStartButtonClicked() {
+        // 다음번 챌린지 완료시 축하 애니메이션을 보여주기 위해 userDefault값 초기화
+        UserDefaults().setValue(false, forKey: Constants.IS_SHOWN_CHALLENGE_COMPLETION_EFFECT)
         guard let modifyReadingGaolVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TermViewController") as? TermViewController
         else { return }
         modifyReadingGaolVC.initializer = 1

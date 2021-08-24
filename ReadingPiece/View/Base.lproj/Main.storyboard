@@ -1491,6 +1491,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1h-ZI-g5n">
+                                <rect key="frame" x="30" y="544.5" width="315" height="92.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="16"/>
+                                <state key="normal" title="계속하기">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="continuReadingAction:" destination="6Tc-t8-UJj" eventType="touchUpInside" id="vdX-fJ-iV1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해내셨군요! 00케이크를 완성했어요. 다음 챌린지를 통해 독서 습관을 이어나가요!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2LM-42-FPB">
+                                <rect key="frame" x="0.0" y="383" width="375" height="41.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3EC-BS-h4p">
                                 <rect key="frame" x="99" y="90" width="177" height="273"/>
                                 <subviews>
@@ -1523,32 +1539,9 @@
                                     <constraint firstItem="Jzj-Nt-zh4" firstAttribute="top" secondItem="hyY-Et-MAc" secondAttribute="bottom" constant="8" id="w3K-9v-wmS"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해내셨군요! 00케이크를 완성했어요. 다음 챌린지를 통해 독서 습관을 이어나가요!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2LM-42-FPB">
-                                <rect key="frame" x="0.0" y="383" width="375" height="41.5"/>
-                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1h-ZI-g5n">
-                                <rect key="frame" x="30" y="668" width="315" height="36"/>
-                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="16"/>
-                                <state key="normal" title="계속하기">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="continueReading:" destination="6Tc-t8-UJj" eventType="touchUpInside" id="8Cf-Y1-Ezi"/>
-                                </connections>
-                            </button>
                             <skView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OA2-fP-V8F">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
                             </skView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UW1-D1-3J3">
-                                <rect key="frame" x="24" y="25" width="16" height="22"/>
-                                <state key="normal" image="clearGlyphSearchBar"/>
-                                <connections>
-                                    <action selector="closeModal:" destination="6Tc-t8-UJj" eventType="touchUpInside" id="bK3-dT-vw3"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Dvd-sT-Rms"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1561,15 +1554,12 @@
                             <constraint firstItem="3EC-BS-h4p" firstAttribute="top" secondItem="Dvd-sT-Rms" secondAttribute="top" constant="90" id="LOE-QV-D8f"/>
                             <constraint firstItem="OA2-fP-V8F" firstAttribute="leading" secondItem="Dvd-sT-Rms" secondAttribute="leading" id="OGA-mn-93d"/>
                             <constraint firstItem="2LM-42-FPB" firstAttribute="centerX" secondItem="3EC-BS-h4p" secondAttribute="centerX" id="Q9Y-5V-AJs"/>
-                            <constraint firstItem="Dvd-sT-Rms" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UW1-D1-3J3" secondAttribute="trailing" constant="10" id="Rf4-pt-RNU"/>
                             <constraint firstItem="2LM-42-FPB" firstAttribute="top" secondItem="3EC-BS-h4p" secondAttribute="bottom" constant="20" id="cTW-FC-G8Q"/>
                             <constraint firstItem="Dvd-sT-Rms" firstAttribute="bottom" secondItem="OA2-fP-V8F" secondAttribute="bottom" id="d2G-pD-dcK"/>
                             <constraint firstItem="3EC-BS-h4p" firstAttribute="leading" secondItem="Dvd-sT-Rms" secondAttribute="leading" constant="99" id="f4K-Jl-3nL"/>
-                            <constraint firstItem="UW1-D1-3J3" firstAttribute="top" secondItem="Dvd-sT-Rms" secondAttribute="top" constant="25" id="fkw-dq-ohC"/>
                             <constraint firstItem="OA2-fP-V8F" firstAttribute="top" secondItem="Dvd-sT-Rms" secondAttribute="top" id="hi0-2E-tkS"/>
                             <constraint firstItem="OA2-fP-V8F" firstAttribute="height" secondItem="Dvd-sT-Rms" secondAttribute="height" id="kGx-Pl-imT"/>
                             <constraint firstItem="2LM-42-FPB" firstAttribute="leading" secondItem="Dvd-sT-Rms" secondAttribute="leading" id="oBy-rr-vbD"/>
-                            <constraint firstItem="UW1-D1-3J3" firstAttribute="leading" secondItem="Dvd-sT-Rms" secondAttribute="leading" constant="24" id="ur4-DI-xzy"/>
                             <constraint firstItem="Dvd-sT-Rms" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="L1h-ZI-g5n" secondAttribute="bottom" constant="10" id="vVp-LK-Kir"/>
                         </constraints>
                     </view>
@@ -1579,8 +1569,7 @@
                         <outlet property="challengeNameLabel" destination="Jzj-Nt-zh4" id="b7j-yQ-AcJ"/>
                         <outlet property="challengeRewardImage" destination="S23-QA-XZ3" id="QFP-gt-eKm"/>
                         <outlet property="challengeRewardView" destination="3EC-BS-h4p" id="oa9-iu-S1F"/>
-                        <outlet property="closeButton" destination="UW1-D1-3J3" id="hvr-et-cyl"/>
-                        <outlet property="continueButton" destination="L1h-ZI-g5n" id="Krr-j2-bYJ"/>
+                        <outlet property="continueButton" destination="L1h-ZI-g5n" id="2lw-Wn-rb4"/>
                         <outlet property="fireCrackerView" destination="OA2-fP-V8F" id="OIa-kN-cHk"/>
                     </connections>
                 </viewController>

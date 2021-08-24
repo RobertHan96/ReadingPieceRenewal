@@ -19,9 +19,9 @@ extension UIFont {
         case thin = "Thin"
     }
 
+    // ex. label.font = .NotoSans(.medium, size: 16)
     static func NotoSans(_ type: NotoSansType, size: CGFloat) -> UIFont {
         return UIFont(name: "NotoSansCJKkr-\(type.rawValue)", size: size)!
     }
-    
-    // ex. label.font = .NotoSans(.medium, size: 16)
+
 }

@@ -20,6 +20,7 @@ struct Constants {
     static let USERDEFAULT_KEY_CHALLENGE_ID = "challengeId"
     static let USERDEFAULT_KEY_GOAL_USER_NAME = "userName"
     static let USERDEFAULT_KEY_GOAL_TARGET_TIME = "targetTime"
+    static let IS_SHOWN_CHALLENGE_COMPLETION_EFFECT = "isShownChallengeCompletionEffect"
     let ACCESS_TOKEN_HEADER: [String : String] = ["Content-Type": "application/json", "x-access-token": KEYCHAIN_TOKEN ?? ""]
 }
 
