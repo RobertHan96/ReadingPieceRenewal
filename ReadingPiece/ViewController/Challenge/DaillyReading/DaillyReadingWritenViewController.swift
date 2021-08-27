@@ -8,6 +8,7 @@
 import UIKit
 import KeychainSwift
 import Kingfisher
+import Bond
 
 protocol ReadingStatusDelegate {
     func setReadingPage(_ page: Int)
@@ -286,14 +287,13 @@ extension DaillyReadingWritenViewController: ReadingStatusDelegate {
 extension DaillyReadingWritenViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        if let char = text.cString(using: String.Encoding.utf8) {
-            commentLengthLabel.text = "\(textView.text.count) / 100"
-            let isBackSpace = strcmp(char, "\\b")
-            if isBackSpace == -92 {
-                return true
+        commentTextView.reactive.text.observeNext { text in
+            let textLength = text._unbox?.count ?? 0
+            DispatchQueue.main.async {
+                self.commentLengthLabel.text = "\(textLength) / 100"
             }
         }
+
         guard textView.text!.count < 100 else { return false }
         return true
 
