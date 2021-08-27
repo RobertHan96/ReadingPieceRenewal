@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import IQKeyboardManagerSwift
 import KeychainSwift
+import FirebaseAnalytics
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         // Firebase Analytics 설정
         FirebaseApp.configure()
+        Analytics.logEvent("init", parameters: nil)
 //         키체인 삭제 테스트
 //        if keychain.clear() {
 //            print("cleared keychain")
