@@ -66,11 +66,7 @@ class DaillyReadingWritenViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         picker.delegate = self
-        commentTextView.delegate = self
-        
-        textField.reactive.text.observeNext { text in
-            print(text)
-        }
+        commentTextView.delegate = self        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
