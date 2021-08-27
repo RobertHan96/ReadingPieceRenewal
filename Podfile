@@ -19,5 +19,6 @@ target 'ReadingPiece' do
   pod 'KeychainSwift', '~> 19.0'
   pod 'Firebase/Analytics'
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'Bond'
 
 end

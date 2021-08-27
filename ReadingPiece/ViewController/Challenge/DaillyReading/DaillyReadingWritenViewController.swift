@@ -9,7 +9,6 @@ import UIKit
 import KeychainSwift
 import Kingfisher
 
-
 protocol ReadingStatusDelegate {
     func setReadingPage(_ page: Int)
     func setReadingPercent(_ percent: Int)
@@ -67,6 +66,10 @@ class DaillyReadingWritenViewController: UIViewController {
         setupUI()
         picker.delegate = self
         commentTextView.delegate = self
+        
+        textField.reactive.text.observeNext { text in
+            print(text)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
